@@ -134,7 +134,7 @@ class PowerSpec:
 
         W_prime = -(1.0/3.0)*eta_E*sigma_psi-(1.0/3.0)*(sigma_psi-0.5*X_vals)*(5.0*I_vals+8.0*H_vals+G_vals-(2.0/3.0)*sigma_0)
 
-        Z_prime = (5.0*F_vals+D_vals)**2+(1.0/9.0)*rho_vals**2+(2.0/3.0)*rho_vals*(5.0*F_vals+D_vals)+(2.0/3.0)*(sigma_psi-0.5*X_vals)*(G_vals+7.0*H_vals)-(1.0/3.0)*Y_vals*(-2.5*I_vals+3.0*H_vals+0.5*G_vals+(1.0/3.0)*sigma_0)
+        Z_prime = (5.0*F_vals+D_vals)**2+(4.0/9.0)*rho_vals**2-(4.0/3.0)*rho_vals*(5.0*F_vals+D_vals)+(2.0/3.0)*(sigma_psi-0.5*X_vals)*(G_vals+7.0*H_vals)-(1.0/3.0)*Y_vals*(-2.5*I_vals+3.0*H_vals+0.5*G_vals+(1.0/3.0)*sigma_0)
 
         exponent_1 = A_squared_val*X_vals-2.0*B_squared_val*W_prime
         exponent_3 = A_squared_val*Y_vals-2.0*B_squared_val*Z_prime

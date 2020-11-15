@@ -145,7 +145,7 @@ def calc_rho_bar(k, P):
 
     q, I1 = dosph(1, k, P, -1)
 
-    rho_bar = 0.5*npi2*I1
+    rho_bar = -0.5*npi2*I1
 
     return rho_bar
 
