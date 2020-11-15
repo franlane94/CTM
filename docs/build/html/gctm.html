@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using the GCTM in real space &mdash; The General Cosmological Trajectories Method (GCTM) module 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="The General Cosmological Trajectories Method (GCTM) module 1 documentation" href="index.html"/>
+        <link rel="next" title="Using the GCTM in redshift space" href="gctm_redshift_space.html"/>
+        <link rel="prev" title="Basic cosmology operations" href="basic_cosmology.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> The General Cosmological Trajectories Method (GCTM) module
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="basic_cosmology.html">Basic cosmology operations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the GCTM in real space</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-i-calculating-the-linear-power-spectrum">Example I - Calculating the linear power spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-ii-calculating-the-zel-dovich-power-spectrum">Example II - Calculating the Zel’dovich power spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-iii-calculating-the-gctm-power-spectrum">Example III - Calculating the GCTM power spectrum</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gctm_redshift_space.html">Using the GCTM in redshift space</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The General Cosmological Trajectories Method (GCTM) module</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Using the GCTM in real space</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/gctm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-the-gctm-in-real-space">
+<h1>Using the GCTM in real space<a class="headerlink" href="#using-the-gctm-in-real-space" title="Permalink to this headline">¶</a></h1>
+<p>Documention introducing the GCTM class</p>
+<dl class="class">
+<dt id="GCTM">
+<em class="property">class </em><code class="descname">GCTM</code><span class="sig-paren">(</span><em>min_k=1e-7</em>, <em>max_k=2e3</em>, <em>min_k_calc=1e-5</em>, <em>max_k_calc=100.0</em>, <em>nk=3000</em>, <em>h=0.6737</em>, <em>omega0_b=0.02233</em>, <em>omega0_cdm=0.11977</em>, <em>n_s=0.9652</em>, <em>sigma_8=0.8101</em>, <em>verbose=False</em>, <em>gauge='sync'</em>, <em>output='mPk'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#GCTM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Class to calculate the linear, Zel’dovich and GCTM power spectra in real and redshift space</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>min_k (<em>int</em>) : the minimum <span class="math notranslate nohighlight">\(k\)</span> value used to calculate loop integrals (<strong>default:       min_k=1e-7</strong>)</li>
+<li>max_k (<em>int</em>) : the maximum <span class="math notranslate nohighlight">\(k\)</span> value used to calculate loop integrals (<strong>default: max_k=2e3</strong>)</li>
+<li>min_k_calc (<em>int</em>) : the minimum <span class="math notranslate nohighlight">\(k\)</span> value used to calculate the power spectrum (<strong>default: min_k_calc=1e-5</strong>)</li>
+<li>max_k_calc (<em>int</em>) : the maximum <span class="math notranslate nohighlight">\(k\)</span> value used to calculate the power spectrum (<strong>default: max_k_calc=1e2</strong>)</li>
+<li>nk (<em>int</em>) : the number of <span class="math notranslate nohighlight">\(k\)</span> values used to calculate the power spectrum (<strong>default: nk=3000</strong>)</li>
+<li>h (<em>float</em>) : the dimensionless Hubble parameter (<strong>default: h=0.6737</strong>)</li>
+<li>omega0_b (<em>float</em>) : the current baryon density, <span class="math notranslate nohighlight">\(\Omega_{b,0}h^2\)</span> (<strong>default: omega0_b=0.02233</strong>)</li>
+<li>omega0_cdm (<em>float</em>) : the current cold dark matter density, <span class="math notranslate nohighlight">\(\Omega_{cdm,0}h^2\)</span> (<strong>default: omega0_cdm=0.11977</strong>)</li>
+<li>n_s (<em>float</em>) : the tilt of the primordial power spectrum (<strong>default: n_s=0.9652</strong>)</li>
+<li>sigma_8 (<em>float</em>) : the amplitude of matter fluctations within a sphere of radius <span class="math notranslate nohighlight">\(r=8\ \mathrm{Mpc}\ \mathrm{h}^{-1}\)</span> at <span class="math notranslate nohighlight">\(z=0\)</span> (<strong>default: sigma_8=0.8101</strong>)</li>
+<li>verbose (<em>bool</em>) : whether to turn on the default CLASS logging (<strong>default: verbose=False</strong>)</li>
+<li>gauge (<em>string</em>) : whether to use the synchronous or newtonian gauge (<strong>default: gauge=sync</strong>)</li>
+<li>output (<em>string</em>) : whether to output the matter power spectrum or CMB power spectrum (<strong>default: output=’mPk’</strong>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="linear_growth_factor">
+<code class="descname">linear_growth_factor</code><span class="sig-paren">(</span><em>z_val=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#linear_growth_factor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate the linear growth factor <span class="math notranslate nohighlight">\(D_1\left(z\right)\)</span> at a given redshift</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>z_val (<em>float</em>) : the redshift at which the linear growth factor is calculated (<strong>default: z_val=0.0</strong>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="linear_power">
+<code class="descname">linear_power</code><span class="sig-paren">(</span><em>input_k</em>, <em>z_val=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#linear_power" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate the linear power spectrum at a given redshift using Class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>input_k (<em>array</em>) : log-spaced array of <span class="math notranslate nohighlight">\(k\)</span> values to compute the linear power spectrum at</li>
+<li>z_val (<em>float</em>) : the redshift at which the linear power spectrum is calculated (<strong>default: z_val=0.0</strong>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="zeldovich_power">
+<code class="descname">zeldovich_power</code><span class="sig-paren">(</span><em>n_val=32</em>, <em>z_val=0.0</em>, <em>kc=0.0</em>, <em>input_k=np.zeros(10)</em>, <em>input_P=np.zeros(10)</em>, <em>save=False</em><span class="sig-paren">)</span><a class="headerlink" href="#zeldovich_power" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to compute the Zel’dovich approximation power spectrum at a given redshift</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>z_val (<em>float</em>) : the redshift at which the Zel’dovich power spectrum is calculated (<strong>default: z_val=0.0</strong>)</li>
+<li>kc (<em>float</em>, optional) : the cutoff value to be used if an initial Gaussian damped power spectrum is used (<strong>default: kc=0.0</strong>)</li>
+<li>n_val (<em>int</em>, optional) : the number of spherical Bessel functions summed over (<strong>default: n_val=32</strong>)</li>
+<li>input_k (<em>array</em>, optional) : log-spaced array of <span class="math notranslate nohighlight">\(k\)</span> values to compute the linear power spectrum at</li>
+<li>input_P (<em>array</em>, optional) : array of linear power spectrum values at <span class="math notranslate nohighlight">\(z=0\)</span></li>
+<li>save (<em>bool</em>, optional) : whether to save the calculated power spectrum to the current directory</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">If input power spectrum values are given the log-spaced <span class="math notranslate nohighlight">\(k\)</span> values used to compute it must also be given.</p>
+</div>
+<dl class="function">
+<dt id="lpt_one_loop_power">
+<code class="descname">lpt_one_loop_power</code><span class="sig-paren">(</span><em>z_val=0.0</em>, <em>input_k=np.zeros(10)</em>, <em>input_P=np.zeros(10)</em>, <em>save=False</em><span class="sig-paren">)</span><a class="headerlink" href="#lpt_one_loop_power" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate the LPT 1-loop power spectrum spectrum at a given redshift using <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2014MNRAS.437..588W/abstract">Wang et al. (2014)</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>z_val (<em>float</em>) : the redshift at which the Zel’dovich power spectrum is calculated (<strong>default: z_val=0.0</strong>)</li>
+<li>input_k (<em>array</em>, optional) : log-spaced array of <span class="math notranslate nohighlight">\(k\)</span> values to compute the linear power spectrum at</li>
+<li>input_P (<em>array</em>, optional) : array of linear power spectrum values at <span class="math notranslate nohighlight">\(z=0\)</span></li>
+<li>save (<em>bool</em>, optional) : whether to save the calculated power spectrum to the current directory</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="gctm_power">
+<code class="descname">gctm_power</code><span class="sig-paren">(</span><em>n_val=32</em>, <em>zinit=99.0</em>, <em>z_val=0.0</em>, <em>epsilon=1.0</em>, <em>save=False</em>, <em>kc=0.0</em>, <em>input_k=np.zeros(10)</em>, <em>input_P=np.zeros(10)</em>, <em>input_z=np.zeros(10)</em>, <em>input_A=np.zeros(10)</em>, <em>input_B=np.zeros(10)</em><span class="sig-paren">)</span><a class="headerlink" href="#gctm_power" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculation the GCTM power spectrum at a given redshift using the Beyond Zel’dovich approximation if function <span class="math notranslate nohighlight">\(A\left(z\right)\)</span> is not defined. See Lane et al. 2020 for more details</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>z_val (<em>float</em>) : the redshift at which the GCTM power spectrum is calculated (<strong>default: z_val=0.0</strong>)</li>
+<li>zinit (<em>float</em>) : the initial redshift <span class="math notranslate nohighlight">\(z_i\)</span> that the time dependent functions are integrated from (<strong>default: zinit=99.0</strong>)</li>
+<li>epsilon (<em>float</em>) : the value of the expansion parameter <span class="math notranslate nohighlight">\(\epsilon\)</span> (<strong>default: epsilon=1.0</strong>)</li>
+<li>n_val (<em>int</em>, optional) : the number of spherical Bessel functions summed over (<strong>default: n_val=32</strong>)</li>
+<li>kc (<em>float</em>, optional) : the cutoff value to be used if an initial Gaussian damped power spectrum is used (<strong>default: kc=0.0</strong>)</li>
+<li>input_k (<em>array</em>, optional) : log-spaced array of <span class="math notranslate nohighlight">\(k\)</span> values to compute the linear power spectrum at</li>
+<li>input_P (<em>array</em>, optional) : array of linear power spectrum values at <span class="math notranslate nohighlight">\(z=0\)</span></li>
+<li>input_A (<em>array</em>, optional) : array of <span class="math notranslate nohighlight">\(A\left(z\right)\)</span> values</li>
+<li>input_z (<em>array</em>, optional) : array of redshift values corresponding to <span class="math notranslate nohighlight">\(A\)</span> values</li>
+<li>input_B (<em>array</em>, optional) : array of <span class="math notranslate nohighlight">\(B\left(z\right)\)</span> values corresponding to <span class="math notranslate nohighlight">\(A\)</span> values and redshift values</li>
+<li>save (<em>bool</em>, optional) : whether to save the calculated power spectrum to the current directory</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">If input A or input B or both are given then the redshift values used to compute them must also be given. For convergence use at least 1000 redshift values.</p>
+</div>
+<div class="section" id="example-i-calculating-the-linear-power-spectrum">
+<h2>Example I - Calculating the linear power spectrum<a class="headerlink" href="#example-i-calculating-the-linear-power-spectrum" title="Permalink to this headline">¶</a></h2>
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">gctm</span> <span class="kn">import</span> <span class="n">GCTM</span>
+
+<span class="c1"># Define the k values</span>
+
+<span class="n">k_vals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Calculate the linear power spectrum at z=0</span>
+
+<span class="n">P_lin_0</span><span class="o">=</span><span class="n">GCTM</span><span class="p">()</span><span class="o">.</span><span class="n">linear_power</span><span class="p">(</span><span class="n">k_vals</span><span class="p">)</span>
+
+<span class="c1"># Calculate the linear power spectrum at z=1</span>
+
+<span class="n">P_lin_1</span><span class="o">=</span><span class="n">GCTM</span><span class="p">()</span><span class="o">.</span><span class="n">linear_power</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">z_val</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_lin_0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Linear\ at\ }z=0$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_lin_1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Linear\ at\ }z=1$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$k\ [\mathrm</span><span class="si">{h}</span><span class="s2">\ \mathrm</span><span class="si">{Mpc}</span><span class="s2">^{-1}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{P}</span><span class="s2">\left(k\right)\ [\mathrm</span><span class="si">{Mpc}</span><span class="s2">^3\ \mathrm</span><span class="si">{h}</span><span class="s2">^{-3}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">1e1</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/gctm_1_1.png" src="_images/gctm_1_1.png" />
+</div>
+</div>
+<div class="section" id="example-ii-calculating-the-zel-dovich-power-spectrum">
+<h2>Example II - Calculating the Zel’dovich power spectrum<a class="headerlink" href="#example-ii-calculating-the-zel-dovich-power-spectrum" title="Permalink to this headline">¶</a></h2>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Zel&#39;dovich power spectrum at z=0</span>
+
+<span class="n">P_zel_0</span><span class="o">=</span><span class="n">GCTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">zeldovich_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the results</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_lin_0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{Linear}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_zel_0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{Zel}</span><span class="s2">^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$k\ [\mathrm</span><span class="si">{h}</span><span class="s2">\ \mathrm</span><span class="si">{Mpc}</span><span class="s2">^{-1}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{P}</span><span class="s2">\left(k\right)\ [\mathrm</span><span class="si">{Mpc}</span><span class="s2">^3\ \mathrm</span><span class="si">{h}</span><span class="s2">^{-3}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">1e1</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/gctm_3_0.png" src="_images/gctm_3_0.png" />
+</div>
+<p>We can also calculate the Zel’dovich power spectrum using a Gaussian damped initial power spectrum given by</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{P}_\mathrm{damped}\left(k\right)=\mathrm{e}^{-\left(\frac{k}{k_c}\right)^2}\mathrm{P}_\mathrm{lin}\left(k\right)\]</div>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Zel&#39;dovich power spectrum at z=0 with kc=5 h/Mpc</span>
+
+<span class="n">P_zel_0_5</span><span class="o">=</span><span class="n">GCTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">zeldovich_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the results</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_lin_0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{Linear}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_zel_0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{Zel}</span><span class="s2">^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_zel_0_5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Damped\ Zel}^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$k\ [\mathrm</span><span class="si">{h}</span><span class="s2">\ \mathrm</span><span class="si">{Mpc}</span><span class="s2">^{-1}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{P}</span><span class="s2">\left(k\right)\ [\mathrm</span><span class="si">{Mpc}</span><span class="s2">^3\ \mathrm</span><span class="si">{h}</span><span class="s2">^{-3}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">1e1</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/gctm_5_0.png" src="_images/gctm_5_0.png" />
+</div>
+</div>
+<div class="section" id="example-iii-calculating-the-gctm-power-spectrum">
+<h2>Example III - Calculating the GCTM power spectrum<a class="headerlink" href="#example-iii-calculating-the-gctm-power-spectrum" title="Permalink to this headline">¶</a></h2>
+<p>We can also calculate the Beyond Zel’dovich power spectrum if no <span class="math notranslate nohighlight">\(A\left(z\right)\)</span> and <span class="math notranslate nohighlight">\(B\left(z\right)\)</span> functions are specified. These functions are</p>
+<div class="math notranslate nohighlight">
+\[A\left(z\right)=\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\ \mathrm{and\ } B\left(z\right)=-\epsilon\frac{3}{2}H_0^2\Omega_m\int_z'^z\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^z\frac{dz'}{H\left(z'\right)}\left(\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\right)^2.\]</div>
+<p>See Lane et al. (2020) for more details.</p>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Beyond Zel&#39;dovich power spectrum at z=0 with kc=5 h/Mpc</span>
+
+<span class="n">P_gctm_0_5</span><span class="o">=</span><span class="n">GCTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">gctm_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the results</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_lin_0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{Linear}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_zel_0_5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Damped\ Zel}^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_gctm_0_5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Damped\ Beyond\ Zel}^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$k\ [\mathrm</span><span class="si">{h}</span><span class="s2">\ \mathrm</span><span class="si">{Mpc}</span><span class="s2">^{-1}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{P}</span><span class="s2">\left(k\right)\ [\mathrm</span><span class="si">{Mpc}</span><span class="s2">^3\ \mathrm</span><span class="si">{h}</span><span class="s2">^{-3}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">1e1</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/gctm_7_0.png" src="_images/gctm_7_0.png" />
+</div>
+<p>You can also define your own <span class="math notranslate nohighlight">\(A\left(z\right)\)</span> function. The <span class="math notranslate nohighlight">\(B\left(z\right)\)</span> is calculated as</p>
+<div class="math notranslate nohighlight">
+\[B\left(z\right)=-\epsilon\frac{3}{2}H_0^2\Omega_m\int_z'^z\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^z\frac{dz'}{H\left(z'\right)}\left(A\left(z\right)\right)^2.\]</div>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define redshift values</span>
+
+<span class="n">z_vals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Calculate A values</span>
+
+<span class="n">A_vals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">z_vals</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+
+  <span class="n">A_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">GCTM</span><span class="p">()</span><span class="o">.</span><span class="n">linear_growth_factor</span><span class="p">(</span><span class="n">z_val</span><span class="o">=</span><span class="n">z_vals</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="n">GCTM</span><span class="p">()</span><span class="o">.</span><span class="n">linear_growth_factor</span><span class="p">(</span><span class="n">z_val</span><span class="o">=</span><span class="mf">99.0</span><span class="p">)</span>
+
+<span class="c1"># Calculate the Beyond Zel&#39;dovich power spectrum at z=0 with kc=5 h/Mpc with input A</span>
+
+<span class="n">P_gctm_input_A</span><span class="o">=</span><span class="n">GCTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">gctm_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">input_z</span><span class="o">=</span><span class="n">z_vals</span><span class="p">,</span> <span class="n">input_A</span><span class="o">=</span><span class="n">A_vals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the results</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_lin_0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{Linear}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_gctm_input_A</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Damped\ Beyond\ Zel}^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$k\ [\mathrm</span><span class="si">{h}</span><span class="s2">\ \mathrm</span><span class="si">{Mpc}</span><span class="s2">^{-1}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{P}</span><span class="s2">\left(k\right)\ [\mathrm</span><span class="si">{Mpc}</span><span class="s2">^3\ \mathrm</span><span class="si">{h}</span><span class="s2">^{-3}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">1e1</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/gctm_9_0.png" src="_images/gctm_9_0.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gctm_redshift_space.html" class="btn btn-neutral float-right" title="Using the GCTM in redshift space" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basic_cosmology.html" class="btn btn-neutral" title="Basic cosmology operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Fran Lane.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

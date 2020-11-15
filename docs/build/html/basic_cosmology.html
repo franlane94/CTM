@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Basic cosmology operations &mdash; The General Cosmological Trajectories Method (GCTM) module 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="The General Cosmological Trajectories Method (GCTM) module 1 documentation" href="index.html"/>
+        <link rel="next" title="Using the GCTM in real space" href="gctm.html"/>
+        <link rel="prev" title="Welcome to the GCTM module’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> The General Cosmological Trajectories Method (GCTM) module
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Basic cosmology operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gctm.html">Using the GCTM in real space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gctm_redshift_space.html">Using the GCTM in redshift space</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The General Cosmological Trajectories Method (GCTM) module</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Basic cosmology operations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/basic_cosmology.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="basic-cosmology-operations">
+<h1>Basic cosmology operations<a class="headerlink" href="#basic-cosmology-operations" title="Permalink to this headline">¶</a></h1>
+<p>Documention introducing the Cosmo class</p>
+<dl class="class">
+<dt id="Cosmo">
+<em class="property">class </em><code class="descname">Cosmo</code><span class="sig-paren">(</span><em>h</em>, <em>omega0_b</em>, <em>omega0_cdm</em>, <em>k_max</em>, <em>n_s</em>, <em>sigma_8</em>, <em>verbose</em>, <em>gauge</em>, <em>output</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#Cosmo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Class to calculate basic cosmology functions</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>h (<em>float</em>) : the dimensionless Hubble parameter</li>
+<li>omega0_b (<em>float</em>) : the current baryon density, <span class="math notranslate nohighlight">\(\Omega_{b,0}h^2\)</span></li>
+<li>omega0_cdm (<em>float</em>) : the current cold dark matter density, <span class="math notranslate nohighlight">\(\Omega_{cdm,0}h^2\)</span></li>
+<li>k_max (<em>float</em>) : the maximum <span class="math notranslate nohighlight">\(k\)</span> value used when calculating the linear power spectrum</li>
+<li>n_s (<em>float</em>) : the tilt of the primordial power spectrum</li>
+<li>sigma_8 (<em>float</em>) : the amplitude of matter fluctations within a sphere of radius <span class="math notranslate nohighlight">\(r=8\ \mathrm{Mpc}\ \mathrm{h}^{-1}\)</span> at <span class="math notranslate nohighlight">\(z=0\)</span></li>
+<li>verbose (<em>bool</em>) : whether to turn on the default CLASS logging</li>
+<li>gauge (<em>string</em>) : whether to use the synchronous or newtonian gauge</li>
+<li>output (<em>string</em>) : whether to output the matter power spectrum or CMB power spectrum</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="scale_factor">
+<code class="descname">scale_factor</code><span class="sig-paren">(</span><em>z_val</em><span class="sig-paren">)</span><a class="headerlink" href="#scale_factor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate the scale factor defined as <span class="math notranslate nohighlight">\(a=\left(1+z\right)^{-1}\)</span></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>z_val (<em>float</em>) : the redshift at which the scale factor is computed</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="calc_hubble">
+<code class="descname">calc_hubble</code><span class="sig-paren">(</span><em>z_val</em><span class="sig-paren">)</span><a class="headerlink" href="#calc_hubble" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate the Hubble parameter, <span class="math notranslate nohighlight">\(H\left(z\right)\)</span>, at a given redshift</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>z_val (<em>float</em>) : the redshift at which the Hubble parameter is computed</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="Omega_m">
+<code class="descname">Omega_m</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Omega_m" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate <span class="math notranslate nohighlight">\(\Omega_m=\Omega_{cdm}+\Omega_b\)</span></p>
+<dl class="function">
+<dt id="H0">
+<code class="descname">H0</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#H0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate <span class="math notranslate nohighlight">\(H_0=h\times100\)</span></p>
+<dl class="function">
+<dt id="calc_linear_growth">
+<code class="descname">calc_linear_growth</code><span class="sig-paren">(</span><em>z_val</em><span class="sig-paren">)</span><a class="headerlink" href="#calc_linear_growth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate the linear growth factor, <span class="math notranslate nohighlight">\(D_1\left(z\right)\)</span>, at a given redshift</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>z_val (<em>float</em>) : the redshift at which the linear growth factor is computed</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="calc_independent_linear_growth">
+<code class="descname">calc_independent_linear_growth</code><span class="sig-paren">(</span><em>z_val</em><span class="sig-paren">)</span><a class="headerlink" href="#calc_independent_linear_growth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate the independent linear growth factor, <span class="math notranslate nohighlight">\(f=\frac{d\ln{D_1}}{d\ln{a}}\)</span>, at a given redshift</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>z_val (<em>float</em>) : the redshift at which the linear growth factor is computed</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="calc_linear_power">
+<code class="descname">calc_linear_power</code><span class="sig-paren">(</span><em>z_val</em><span class="sig-paren">)</span><a class="headerlink" href="#calc_linear_power" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate the linear power spectrum at a given redshift using Class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li>z_val (<em>float</em>) : the redshift at which the linear growth factor is computed</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="docutils container">
+</div>
+<p>We can plot the linear growth factor for a range of redshifts</p>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">gctm</span> <span class="kn">import</span> <span class="n">Cosmo</span>
+
+<span class="c1"># Define the redshift values</span>
+
+<span class="n">z_vals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Calculate the linear growth factor values</span>
+
+<span class="n">D_1_vals</span><span class="o">=</span><span class="n">Cosmo</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">omega0_b</span><span class="o">=</span><span class="mf">0.02233</span><span class="p">,</span> <span class="n">omega0_cdm</span><span class="o">=</span><span class="mf">0.112</span><span class="p">,</span> <span class="n">n_s</span><span class="o">=</span><span class="mf">0.96</span><span class="p">,</span> <span class="n">sigma_8</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">k_max</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gauge</span><span class="o">=</span><span class="s1">&#39;sync&#39;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">&#39;mPk&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">calc_linear_growth</span><span class="p">(</span><span class="n">z_vals</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z_vals</span><span class="p">,</span> <span class="n">D_1_vals</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$z$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$D_1$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">202</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/basic_cosmology_1_0.png" src="_images/basic_cosmology_1_0.png" />
+</div>
+<p>We can also plot the independent growth factor for a range of redshifts</p>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the independent growth factor values</span>
+
+<span class="n">f_vals</span><span class="o">=</span><span class="n">Cosmo</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">omega0_b</span><span class="o">=</span><span class="mf">0.02233</span><span class="p">,</span> <span class="n">omega0_cdm</span><span class="o">=</span><span class="mf">0.112</span><span class="p">,</span> <span class="n">n_s</span><span class="o">=</span><span class="mf">0.96</span><span class="p">,</span> <span class="n">sigma_8</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">k_max</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gauge</span><span class="o">=</span><span class="s1">&#39;sync&#39;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">&#39;mPk&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">calc_independent_linear_growth</span><span class="p">(</span><span class="n">z_vals</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z_vals</span><span class="p">,</span> <span class="n">f_vals</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$z$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$f$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">202</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/basic_cosmology_2_0.png" src="_images/basic_cosmology_2_0.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gctm.html" class="btn btn-neutral float-right" title="Using the GCTM in real space" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to the GCTM module’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Fran Lane.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

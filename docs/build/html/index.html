@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to the GCTM module’s documentation! &mdash; The General Cosmological Trajectories Method (GCTM) module 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="The General Cosmological Trajectories Method (GCTM) module 1 documentation" href="#"/>
+        <link rel="next" title="Basic cosmology operations" href="basic_cosmology.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> The General Cosmological Trajectories Method (GCTM) module
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="basic_cosmology.html">Basic cosmology operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gctm.html">Using the GCTM in real space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gctm_redshift_space.html">Using the GCTM in redshift space</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">The General Cosmological Trajectories Method (GCTM) module</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Welcome to the GCTM module’s documentation!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-the-gctm-module-s-documentation">
+<h1>Welcome to the GCTM module’s documentation!<a class="headerlink" href="#welcome-to-the-gctm-module-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>The General Cosmological Trajectories Method (GCTM) is a perturbative technique to compute the power spectrum and two-point correlation function in both real and redshift space in the mildly to non-linear regime for a range of cosmologies.</p>
+<div class="section" id="source-and-installation">
+<h2>Source and installation<a class="headerlink" href="#source-and-installation" title="Permalink to this headline">¶</a></h2>
+<p>The code is available at <a class="reference external" href="https://github.com/franlane94/GCTM">Github</a> but can also be installed using pip (all of the dependencies will be automatically installed)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install gctm
+</pre></div>
+</div>
+<p>To install the code from source, first run the following</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install mcfit
+pip install classylss
+git clone https://github.com/franlane94/GCTM
+</pre></div>
+</div>
+<p>Then navigate to your .bash_profile (or .profile on Linux machines) and add the following line</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PYTHONPATH</span><span class="s2">:/DIRECTORY_WHERE_GCTM_IS_INSTALLED&quot;</span>
+</pre></div>
+</div>
+<p>To check the module has been installed correctly run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python
+from gctm import GCTM
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>For a quickstart see the <a class="reference external" href="https://github.com/franlane94/GCTM/tree/master/Examples">Jupyter notebooks</a>. For more detailed examples and information about the code please see the documentation pages.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The units of commonly used variables in this code are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><span class="math notranslate nohighlight">\(H_0\ [\mathrm{km}\ \mathrm{s}^{-1}\ \mathrm{Mpc}^{-1}]\)</span></li>
+<li><span class="math notranslate nohighlight">\(k\ [\mathrm{h}\ \mathrm{Mpc}^{-1}]\)</span></li>
+<li><span class="math notranslate nohighlight">\(\mathrm{P}\left(k\right)\ [\mathrm{Mpc}^3\ \mathrm{h}^{-3}]\)</span></li>
+</ul>
+</div></blockquote>
+</div>
+<p>The default cosmology is <a class="reference external" href="https://arxiv.org/abs/1807.06209">Planck18</a> and the values of key parameters shown in the Table below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="76%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(H_0\)</span></td>
+<td>67.66</td>
+</tr>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(\Omega_{cdm}h^2\)</span></td>
+<td>0.1193</td>
+</tr>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(\Omega_{b}h^2\)</span></td>
+<td>0.0224</td>
+</tr>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(n_s\)</span></td>
+<td>0.9665</td>
+</tr>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(\sigma_8\)</span></td>
+<td>0.8102</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="citation">
+<h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h2>
+<p>The GCTM code is described in Lane et al. (2020). Please cite this paper if you use this module.</p>
+</div>
+<div class="section" id="help-and-issues">
+<h2>Help and issues<a class="headerlink" href="#help-and-issues" title="Permalink to this headline">¶</a></h2>
+<p>If you encounter any issues please either use the <a class="reference external" href="https://github.com/franlane94/GCTM/issues">Github issues</a>  page, or email <a class="reference external" href="mailto:gctmcode&#37;&#52;&#48;gmail&#46;com">gctmcode<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="basic_cosmology.html" class="btn btn-neutral float-right" title="Basic cosmology operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Fran Lane.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="None"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
