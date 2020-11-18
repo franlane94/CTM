@@ -57,7 +57,7 @@ class PowerIntegral:
 
         # Calculate the low-k approximation if ki<5e-5
 
-        if ki < 5e-5:
+        if ki < 5e-3:
 
             Power = calc_low_k_approx(ki, P, sigma_psi, A, kmax)
 
