@@ -66,13 +66,16 @@ Function to calculation the GCTM power spectrum at a given redshift using the Be
              - n_val (*int*, optional) : the number of spherical Bessel functions summed over (**default: n_val=32**)
              - kc (*float*, optional) : the cutoff value to be used if an initial Gaussian damped power spectrum is used (**default: kc=0.0**)
              - input_k (*array*, optional) : log-spaced array of :math:`k` values to compute the linear power spectrum at
-             - input_P (*array*, optional) : array of linear power spectrum values at :math:`z=0`
+             -input_k_init (*array*, optional) : log-space array of :math:`k` values are which the input_P is calculated at
+             - input_P (*array*, optional) : array of linear power spectrum values at :math:`z=z_i`
              - input_A (*array*, optional) : array of :math:`A\left(z\right)` values
              - input_z (*array*, optional) : array of redshift values corresponding to :math:`A` values
              - input_B (*array*, optional) : array of :math:`B\left(z\right)` values corresponding to :math:`A` values and redshift values
              - save (*bool*, optional) : whether to save the calculated power spectrum to the current directory
 
-.. important:: If input A or input B or both are given then the redshift values used to compute them must also be given. For convergence use at least 1000 redshift values.
+.. important:: If input_A or input_B or both are given then the redshift values used to compute them must also be given. For convergence use at least 1000 redshift values.
+
+.. important:: If input_P is given you must also give input_k_init and if input_P is not evaluated at :math:`z_i=99` and you have not passed your own input_A array you must also specify the initial redshift at which input_P is calculated as z_init. 
 
 Example I - Calculating the linear power spectrum
 -------------------------------------------------

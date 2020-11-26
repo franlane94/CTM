@@ -28,7 +28,8 @@ class CTM:
 
     k_c = cutoff k value if using an initial Gaussian damped power spectrum
     input_k = input k values (if you do not specify then automatic k values are returned)
-    input_P = input P values at z=0 you must also specify the k values used to calculate input_P
+    input_P = input P values at zinit you must also specify the k values used to calculate input_P as input_k_init. Note if your initial z is not zinit=99 then you must also specify z_init unless you have passed input_A
+    input_k_init = input k values at which the input_P power spectrum is calculated at
     z_val = the redshift value at which the GCTM power spectrum will be calculated
     epsilon = the expansion parameter (controls the size of the non-linear correction)
     z_init = the initial redshift value the time dependent factors are integrated from
@@ -86,11 +87,11 @@ class CTM:
 
         return LPTPower(min_k=self.min_k, max_k=self.max_k, min_k_zel=self.min_k_zel, max_k_zel=self.max_k_zel, nk=self.nk, h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).one_loop(z_val=z_val, input_k=input_k, input_P=input_P, save=save)
 
-    def ctm_power(self,  n_val=32, zinit=99.0, z_val=0.0, epsilon=1.0, save=False, kc=0.0, input_k=np.zeros(10), input_P=np.zeros(10), input_z=np.zeros(10), input_A=np.zeros(10), input_B=np.zeros(10)):
+    def ctm_power(self,  n_val=32, zinit=99.0, z_val=0.0, epsilon=1.0, save=False, kc=0.0, input_k=np.zeros(10), input_P=np.zeros(10), input_k_init=np.zeros(10), input_z=np.zeros(10), input_A=np.zeros(10), input_B=np.zeros(10)):
 
 
         # Function to calculate the GCTM power spectrum in real space
 
         # If no A and B functions are specified the Beyond Zel'dovich approximation is used. See the Documentation for details
 
-        return PowerSpec(min_k=self.min_k_zel, max_k=10.0, nk=self.nk, h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_ctm_power(zinit=zinit, z_val=z_val, epsilon=epsilon, save=save, kc=kc, input_k=input_k, input_P=input_P, input_z=input_z, input_A=input_A, input_B=input_B)
+        return PowerSpec(min_k=self.min_k_zel, max_k=10.0, nk=self.nk, h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_ctm_power(zinit=zinit, z_val=z_val, epsilon=epsilon, save=save, kc=kc, input_k=input_k, input_P=input_P, input_k_init=input_k_init, input_z=input_z, input_A=input_A, input_B=input_B)

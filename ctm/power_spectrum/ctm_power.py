@@ -59,26 +59,24 @@ class PowerSpec:
 
         self.cosmo = Cosmo(self.h, self.omega0_b, self.omega0_cdm, self.max_k+1.0, self.n_s, self.sigma_8, self.verbose, self.gauge, self.output)
 
-    def calc_ctm_power(self, n_val=32., zinit=99.0, z_val=0.0, epsilon=1.0, save=False, kc=0.0, input_k=np.zeros(10), input_P=np.zeros(10), input_z=np.zeros(10), input_A=np.zeros(10), input_B=np.zeros(10)):
+    def calc_ctm_power(self, n_val=32., zinit=99.0, z_val=0.0, epsilon=1.0, save=False, kc=0.0, input_k=np.zeros(10), input_k_init=np.zeros(10), input_P=np.zeros(10), input_z=np.zeros(10), input_A=np.zeros(10), input_B=np.zeros(10)):
 
         # Function to calculate the GCTM power spectrum
 
         time = Timer()
         time.start()
 
-        if input_k.all() != 0.0 and input_P.all() != 0.0:
-
-            D_1 = self.cosmo.calc_linear_growth(zinit)
+        if input_P.all() != 0.0:
 
             if kc != 0.0:
 
-                P_vals = np.exp(-(self.k_int/kc)**2)*(D_1)**2*input_P
+                P_vals = np.exp(-(self.k_int/kc)**2)*input_P
 
             else:
 
-                P_vals = (D_1)**2*input_P
+                P_vals = input_P
 
-            P_func = interp(input_k, P_vals)
+            P_func = interp(input_k_init, P_vals)
 
         else:
 
