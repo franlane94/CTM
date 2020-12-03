@@ -24,7 +24,7 @@ class TimeDep:
 
     """
 
-    def __init__(self, zinit=99.0, h=0.6737, omega0_b=0.02233, omega0_cdm=0.11977, k_max=10.0, n_s=0.9652, sigma_8=0.8101, verbose=False, gauge='sync', output='mPk', **kwargs):
+    def __init__(self, zinit=100.0, h=0.6737, omega0_b=0.02233, omega0_cdm=0.11933, k_max=10.0, n_s=0.9665, sigma_8=0.8102, verbose=False, gauge='sync', output='mPk', **kwargs):
 
         # Define the initial z value
 
@@ -71,9 +71,13 @@ class TimeDep:
 
             zeta = np.zeros_like(z)
 
-            for i in range(int(len(z))):
+            def super_conformal(z_prime, z_val):
 
-                zeta[i] = dblquad(lambda s,p: np.power(H(s),-1)*np.power(scale_factor(p)*H(p),-1)*(D_1(p)/D_1(self.zinit))**2, self.zinit, z[i], lambda p: p, lambda p: z[i], epsabs=1e-4)[0]
+                return quad(lambda p: np.power(scale_factor(p)*H(p),-1), z_prime, z_val)[0]
+
+            for i in range(len(z)):
+
+                zeta[i] = quad(lambda z_prime: super_conformal(z_prime, z[i])*np.power(H(z_prime),-1)*(D_1(z_prime)/D_1(self.zinit))**2, self.zinit, z[i], epsabs=1e-4)[0]
 
         else:
 

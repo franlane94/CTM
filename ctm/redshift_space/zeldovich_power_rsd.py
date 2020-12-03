@@ -6,12 +6,12 @@ import mcfit
 from mcfit import SphericalBessel as sph
 import warnings
 import os
-from GCTM.cosmology_tools.cosmology import Cosmo
-from GCTM.cosmology_tools.time_dependence import TimeDep
-from GCTM.power_spectrum_tools.integration import PowerIntegral
-from GCTM.power_spectrum_tools.covariances import calc_covariances_func, calc_covariances_func_one_loop
-from GCTM.misc_tools.timer import Timer
-from GCTM.misc_tools.progress_update import progress_func_power
+from ..cosmology.cosmology import Cosmo
+from ..cosmology.time_dependence import TimeDep
+from ..power_spectrum.integration import PowerIntegral
+from ..power_spectrum.covariances import calc_covariances_func, calc_covariances_func_one_loop
+from ..misc.timer import Timer
+from ..misc.progress_update import progress_func_power
 
 warnings.filterwarnings("ignore")
 
@@ -21,7 +21,7 @@ warnings.filterwarnings("ignore")
 # k_max is the maximum k value used when calculating the power spectrum
 
 
-class ZelPowerRS(object):
+class ZelPowerRSD(object):
 
     def __init__(self, min_k, max_k, nk, h, omega0_b, omega0_cdm, n_s, sigma_8, verbose, gauge, output, **kwargs):
 
@@ -45,7 +45,7 @@ class ZelPowerRS(object):
 
         self.cosmo = Cosmo(self.h, self.omega0_b, self.omega0_cdm, self.max_k+1.0, self.n_s, self.sigma_8, self.verbose, self.gauge, self.output)
 
-    def calc_zeldovich_power_rs(self, z_val=0.0,  mu_k_val=0.0, input_k=np.zeros(10), input_P=np.zeros(10), save=False):
+    def calc_zeldovich_power_rsd(self, z_val=0.0,  mu_k_val=0.0, kc=0.0, input_k=np.zeros(10), input_P=np.zeros(10), save=False):
 
         # Function to calculate the power spectrum for the Zel'dovich approximation in redshift space using the method presented in
 
@@ -56,15 +56,17 @@ class ZelPowerRS(object):
 
         if input_k.all() != 0.0 and input_P.all() != 0.0:
 
-            P_vals = input_P
+            D_1 = self.cosmo.calc_linear_growth(zinit)
+
+            if kc != 0.0:
+
+                P_vals = np.exp(-(input_k/kc)**2)*(D_1)**2*input_P
+
+            else:
+
+                P_vals = (D_1)**2*input_P
 
             P_func = interp(input_k, P_vals)
-
-            k_calc = input_k
-
-            nk_calc = len(input_k)
-
-            max_k_calc = max(input_k)
 
         else:
 
@@ -72,7 +74,13 @@ class ZelPowerRS(object):
 
             D_1 = self.cosmo.calc_linear_growth(z_val)
 
-            P_vals = (D_1)**2*P
+            if kc != 0.0:
+
+                P_vals = np.exp(-(self.k_int/kc)**2)*(D_1)**2*P
+
+            else:
+
+                P_vals = (D_1)**2*P
 
             P_func = interp(self.k_int, P_vals)
 

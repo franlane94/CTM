@@ -87,11 +87,9 @@ class PowerIntegral:
 
         Power = 0.0
 
-        f = np.array([], dtype=np.float128)
-
         # Calculate the low k approximation if ki<5e-4
 
-        if ki < 5e-4:
+        if ki < 5e-5:
 
             Power = calc_low_k_approx_rsd(ki, P, sigma_psi, A, kmax, f_val, mu_k)
 
@@ -105,7 +103,8 @@ class PowerIntegral:
 
                     for l in range(0, 10):
 
-                        K_n += np.array(np.exp(-0.5*ki**2*rsd_exponent_1-0.5*ki**2*rsd_exponent_2)*calc_F_l(l, alpha_0, alpha_1, -0.5*ki**2*C, xi, kappa, gamma, sigma)*(-1)**l*np.power(alpha_1, n)*np.power(kappa, n-l)*np.power(gamma**2/sigma, l)*hyperu(-l, n-l+1.0, 0.5*ki**2*C*kappa*alpha_1), dtype=np.float128)
+                        K_n += np.exp(-0.5*ki**2*rsd_exponent_1-0.5*ki**2*rsd_exponent_2)*calc_F_l(l, alpha_0, alpha_1, -0.5*ki**2*C, xi, kappa, gamma, sigma)*(-1)**l*np.power(alpha_1, n)*np.power(kappa, n-l)*np.power(gamma**2/sigma, l)*hyperu(-l, n-l+1.0, 0.5*ki**2*C*kappa*alpha_1)
+
 
                     f = (ki*front)**n*np.exp(-0.5*ki**2*exponent_k_squared)*K_n
 
@@ -113,7 +112,8 @@ class PowerIntegral:
 
                     for l in range(0, 10):
 
-                        K_n += np.array(np.exp(-0.5*ki**2*rsd_exponent_1-0.5*ki**2*rsd_exponent_2)*calc_F_l(l, alpha_0, alpha_1, -0.5*ki**2*C, xi, kappa, gamma, sigma)*(-1)**l*np.power(kappa, -l)*np.power(gamma**2/sigma, l)*hyperu(-l, -l+1.0, 0.5*ki**2*C*kappa*alpha_1), dtype=np.float128)
+                        K_n += np.exp(-0.5*ki**2*rsd_exponent_1-0.5*ki**2*rsd_exponent_2)*calc_F_l(l,alpha_0,alpha_1,-0.5*ki**2*C,xi,kappa,gamma,sigma)*(-1)**l*np.power(kappa,-l)*np.power(gamma**2/sigma,l)*hyperu(-l,-l+1.0,0.5*ki**2*C*kappa*alpha_1)
+
 
                     f = (np.exp(-0.5*ki**2*exponent_k_squared) - np.exp(-ki**2*zero_lag_1))*K_n
 
@@ -122,9 +122,6 @@ class PowerIntegral:
                 Power += spline(kk, this_Pzel)(ki)
 
             return Power
-
-        return P_sum
-
 
 def calc_low_k_approx(k, P, sigma_psi, A, kmax):
 

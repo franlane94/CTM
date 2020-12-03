@@ -7,5 +7,5 @@ setup(name='ctm',
       author='Fran Lane',
       author_email='ctmcode@gmail.com',
       license='MIT',
-      packages=['ctm', 'ctm.cosmology', 'ctm.misc', 'ctm.power_spectrum'],
+      packages=['ctm', 'ctm.cosmology', 'ctm.misc', 'ctm.power_spectrum', 'ctm.redshift_space'],
       install_requires=['mcfit', 'classylss', 'scipy'])
