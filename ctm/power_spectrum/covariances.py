@@ -24,12 +24,10 @@ def calc_covariances_func(k, P):
     sigma_psi = calc_sigma_psi(k, P)
     q_vals, X_vals, Y_vals = calc_X_and_Y(k, P, sigma_psi)
     eta_E = calc_eta(k, P)
-    sigma_0, sigma_0_0 = calc_sigma_0(k, P)
-    _, D_vals, F_vals = calc_D_and_F(k, P)
-    _, G_vals, H_vals, I_vals = calc_G_H_and_I(k, P)
-    rho_vals = calc_rho_bar(k, P)
+    _, D_vals, F_vals, sigma_0 = calc_D_and_F(k, P)
+    _, G_vals = calc_rho_bar(k, P)
 
-    return sigma_psi, q_vals, X_vals, Y_vals, eta_E, sigma_0, sigma_0_0, D_vals, F_vals, G_vals, H_vals, I_vals, rho_vals
+    return sigma_psi, q_vals, X_vals, Y_vals, eta_E, sigma_0, D_vals, F_vals, G_vals
 
 
 def calc_covariances_func_one_loop(k, P, Q, R):
@@ -99,55 +97,26 @@ def calc_eta(k, P):
 
     return eta_0
 
-
-def calc_sigma_0(k, P):
-
-    # Function to calculate sigma^2_0=\frac{1}{\left(2\pi\right)^3}\int{dk}e^{-ik\cdotq}P_L
-
-    q, I0 = dosph(0, k, P, 0)
-    sigma_vals = 0.5*npi2*I0
-
-    sigma_func = interp(q, sigma_vals)
-    sigma_0 = sigma_func(min(q))
-
-    return sigma_vals, sigma_0
-
-
 def calc_D_and_F(k, P):
 
-    # Function to calculate D=\frac{1}{2\pi^2}\int{dk kj_3(kq)P_L} and F=-\frac{1}{2\pi^2}\int{dk kj_2(kq)/kqP_L}
-
-    q, I1 = dosph(1, k, P, -1)
-    _, I3 = dosph(3, k, P, -1)
-
-    F = -npi2*(I1+I3)/10.0
-    D = 0.5*npi2*I3
-
-    return q, D, F
-
-
-def calc_G_H_and_I(k, P):
-
-    # Function to calculate G=\frac{1}{2\pi^2}\int{dk k^2P_Lj_4(kq)}, H=-\frac{1}{14\pi^2}\int{dk k^2P_L(j_2+j_4)} and I=\frac{1}{210\pi^2}\int{dk k^2P_L(7j_0+10j_2+3j_4)}
+    # Function to calculate D=\frac{1}{2\pi^2}\int{dk kj_3(kq)P_L} and F=-\frac{1}{2\pi^2}\int{dk kj_2(kq)/kqP_L} and sigma^2_0=\frac{1}{\left(2\pi\right)^3}\int{dk}e^{-ik\cdotq}P_L
 
     q, I0 = dosph(0, k, P, 0)
     _, I2 = dosph(2, k, P, 0)
-    _, I4 = dosph(4, k, P, 0)
 
-    G = 0.5*npi2*I4
-    I = npi2*(7.0*I0+10.0*I2+3.0*I4)/210.0
-    H = -npi2*(I2+I4)/14.0
+    F = -0.5*npi2*I2
+    D = npi2*(I0+I2)/(6.0)
+    sigma_0 = 0.5*npi2*I0
 
-    return q, G, H, I
+    return q, D, F, sigma_0
 
-
-def calc_rho_bar(k, P):
+def calc_G(k, P):
 
     q, I1 = dosph(1, k, P, -1)
 
-    rho_bar = -0.5*npi2*I1
+    G = -0.5*npi2*I1
 
-    return rho_bar
+    return q, G
 
 
 def calc_sigma_22(k, Q):

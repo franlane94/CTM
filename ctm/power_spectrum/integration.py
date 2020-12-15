@@ -101,7 +101,7 @@ class PowerIntegral:
 
                 if n > 0:
 
-                    for l in range(0, 10):
+                    for l in range(0, 1):
 
                         K_n += np.exp(-0.5*ki**2*rsd_exponent_1-0.5*ki**2*rsd_exponent_2)*calc_F_l(l, alpha_0, alpha_1, -0.5*ki**2*C, xi, kappa, gamma, sigma)*(-1)**l*np.power(alpha_1, n)*np.power(kappa, n-l)*np.power(gamma**2/sigma, l)*hyperu(-l, n-l+1.0, 0.5*ki**2*C*kappa*alpha_1)
 
@@ -110,7 +110,7 @@ class PowerIntegral:
 
                 else:
 
-                    for l in range(0, 10):
+                    for l in range(0, 1):
 
                         K_n += np.exp(-0.5*ki**2*rsd_exponent_1-0.5*ki**2*rsd_exponent_2)*calc_F_l(l,alpha_0,alpha_1,-0.5*ki**2*C,xi,kappa,gamma,sigma)*(-1)**l*np.power(kappa,-l)*np.power(gamma**2/sigma,l)*hyperu(-l,-l+1.0,0.5*ki**2*C*kappa*alpha_1)
 

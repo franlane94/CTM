@@ -138,7 +138,7 @@ class CTMPowerRSD:
 
         # Calculate the covariances
 
-        sigma_psi, q_vals, X_vals, Y_vals, eta_E, sigma_0, sigma_0_0, D_vals, F_vals, G_vals, H_vals, I_vals, rho_vals = calc_covariances_func(self.k_int, P_func)
+        sigma_psi, q_vals, X_vals, Y_vals, eta_E, sigma_0, D_vals, F_vals, G_vals = calc_covariances_func(self.k_int, P_func)
 
         print("Calculated the covariances")
 
@@ -146,11 +146,11 @@ class CTMPowerRSD:
 
         XY = X_vals + Y_vals
 
-        W_prime = -(1.0/3.0)*eta_E*sigma_psi-(1.0/3.0)*(sigma_psi-0.5*X_vals)*(5.0*I_vals+8.0*H_vals+G_vals-(2.0/3.0)*sigma_0)
+        W_prime = -(1.0/3.0)*eta_E*sigma_psi+(sigma_psi-0.5*X_vals)*((2.0/3.0)*D_vals-(1.0/9.0)*sigma_0)
 
-        Z_prime = (5.0*F_vals+D_vals)**2+(4.0/9.0)*rho_vals**2-(4.0/3.0)*rho_vals*(5.0*F_vals+D_vals)+(2.0/3.0)*(sigma_psi-0.5*X_vals)*(G_vals+7.0*H_vals)-(1.0/3.0)*Y_vals*(-2.5*I_vals+3.0*H_vals+0.5*G_vals+(1.0/3.0)*sigma_0)
+        Z_prime = (1.0/9.0)*G_vals**2+(2.0/3.0)*F_vals*(sigma_psi-0.5*X_vals)+Y_vals*((1.0/18.0)*sigma_0-(1.0/3.0)*D_vals-(1.0/3.0)*F_vals)
 
-        f_1_val = self.cosmo.calc_independent_linear_growth(z_val)
+        f_1_val = self.cosmo.calc_independent_linear_growth(z_val)/D_1_init
 
         f_2_val = -epsilon*w*calc_derivative(z_vals, len(B_array), B_array, z_val)
 
@@ -159,21 +159,26 @@ class CTMPowerRSD:
 
         C = A_squared_val*Y_vals
 
-        xi = 1.0-2.0*(B_squared_val/A_squared_val)*(W_prime/X_vals)*(alpha_0_1/alpha_0)
+        if alpha_2==0 and alpha_3==0:
 
-        kappa = 1.0-2.0*(B_squared_val/A_squared_val)*(Z_prime/Y_vals)*(alpha_1_1/alpha_1)
+            print(mu_k_val, alpha_2, alpha_3)
+            xi = 1.0-2.0*(B_squared_val/A_squared_val)*(W_prime/X_vals)*(alpha_0_1/alpha_0)
 
-        gamma = 1.0-2.0*(B_squared_val/A_squared_val)*(Z_prime/Y_vals)*(alpha_2_1/alpha_2)
+            kappa = 1.0-2.0*(B_squared_val/A_squared_val)*(Z_prime/Y_vals)*(alpha_1_1/alpha_1)
 
-        sigma = 1.0-2.0*(B_squared_val/A_squared_val)*(Z_prime/Y_vals)*(alpha_3_1/alpha_3)
+            gamma = 1.0
 
-        if np.isnan(gamma[0])==True:
+            sigma = 1.0
 
-            gamma = np.ones_like(X_vals)
+        else:
 
-        if np.isnan(sigma[0])==True:
+            xi = 1.0-2.0*(B_squared_val/A_squared_val)*(W_prime/X_vals)*(alpha_0_1/alpha_0)
 
-            sigma = np.ones_like(X_vals)
+            kappa = 1.0-2.0*(B_squared_val/A_squared_val)*(Z_prime/Y_vals)*(alpha_1_1/alpha_1)
+
+            gamma = 1.0-2.0*(B_squared_val/A_squared_val)*(Z_prime/Y_vals)*(alpha_2_1/alpha_2)
+
+            sigma = 1.0-2.0*(B_squared_val/A_squared_val)*(Z_prime/Y_vals)*(alpha_3_1/alpha_3)
 
         exponent_1 = A_squared_val*X_vals-2.0*B_squared_val*W_prime
         exponent_3 = A_squared_val*Y_vals-2.0*B_squared_val*Z_prime
@@ -182,9 +187,9 @@ class CTMPowerRSD:
         exponent_k_squared = exponent_1+exponent_3
         zero_lag_1 = sigma_psi*(A_squared_val+(1.0/3.0)*B_squared_val*eta_E)
 
-        rsd_exponent_1 = A_squared_val*X_vals*(f_1_val*mu_k_val**2*(2.0+f_1_val)-2.0*(B_squared_val/A_squared_val)*(W_prime/X_vals)*f_2_val*mu_k_val**2*(2.0+f_2_val))
+        rsd_exponent_1 = A_squared_val*X_vals*f_1_val*mu_k_val**2*(2.0+f_1_val)-2.0*B_squared_val*W_prime*f_2_val*mu_k_val**2*(2.0+f_2_val)
 
-        rsd_exponent_2 = A_squared_val*Y_vals*(f_1_val*mu_k_val**2*(2.0+f_1_val*mu_k_val**2)-2.0*(B_squared_val/A_squared_val)*(Z_prime/Y_vals)*f_2_val*mu_k_val**2*(2.0+f_2_val*mu_k_val**2))
+        rsd_exponent_2 = A_squared_val*Y_vals*f_1_val*mu_k_val**2*(2.0+f_1_val*mu_k_val**2)-2.0*B_squared_val*Z_prime*f_2_val*mu_k_val**2*(2.0+f_2_val*mu_k_val**2)
 
         # Begin calculating the GCTM power spectrum in redshift space
 
