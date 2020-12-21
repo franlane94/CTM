@@ -17,7 +17,7 @@ renorm = np.sqrt(0.5*np.pi)
 
 
 def calc_covariances_func(k, P):
-
+    
     # Function to calculate the covariances X, Y, U, V, R, S, T
     # for an input power spectrum
 
