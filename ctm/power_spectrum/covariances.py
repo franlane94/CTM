@@ -25,7 +25,7 @@ def calc_covariances_func(k, P):
     q_vals, X_vals, Y_vals = calc_X_and_Y(k, P, sigma_psi)
     eta_E = calc_eta(k, P)
     _, D_vals, F_vals, sigma_0 = calc_D_and_F(k, P)
-    _, G_vals = calc_rho_bar(k, P)
+    _, G_vals = calc_G(k, P)
 
     return sigma_psi, q_vals, X_vals, Y_vals, eta_E, sigma_0, D_vals, F_vals, G_vals
 

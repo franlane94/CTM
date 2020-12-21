@@ -110,7 +110,7 @@ class CTM:
 
         # To save the output power spectrum set save=True
 
-        return ZelPowerRSD(min_k=self.min_k_zel, max_k=10.0, nk=self.nk, h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_zeldovich_power_rsd(z_val=z_val, mu_k_val=mu_k_val, input_k=input_k, input_P=input_P, save=save)
+        return ZelPowerRSD(min_k=self.min_k_zel, max_k=10.0, nk=self.nk, h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_zeldovich_power_rsd(z_val=z_val, mu_k_val=mu_k_val, kc=kc, input_k=input_k, input_P=input_P, save=save)
 
     def ctm_power_rsd(self, zinit=100.0, z_val=0.0, epsilon=1.0, save=False, kc=0.0, mu_k_val=0.0, input_k=np.zeros(10), input_P=np.zeros(10), input_k_init=np.zeros(10), input_z=np.zeros(10), input_A=np.zeros(10), input_B=np.zeros(10)):
 

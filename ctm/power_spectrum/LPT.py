@@ -112,7 +112,7 @@ class LPTPower:
 
         # Calculate the covariances
 
-        sigma_psi, q_vals, X_vals, Y_vals, eta_E, sigma_0, sigma_0_0, D_vals, F_vals, G_vals, H_vals, I_vals, rho_vals = calc_covariances_func(k_calc, P_func)
+        sigma_psi, q_vals, X_vals, Y_vals, eta_E, sigma_0, D_vals, F_vals, G_vals = calc_covariances_func(k_calc, P_func)
 
         print("Calculated the covariances")
 
