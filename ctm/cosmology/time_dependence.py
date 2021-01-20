@@ -21,7 +21,12 @@ class TimeDep:
     - omega0_cdm is the CDM fraction today
     - k_max is the maximum k value used when calculating the power spectra
     - n_s is the spectral index
+    - gauge = the perturbation gauge used
+    - z_init = the initial redshift defined in the CTM
 
+    - k = the k values to calculate the function at
+    - z = the redshift value or values to calculate the time dependent functions at
+    
     """
 
     def __init__(self, zinit=100.0, h=0.6737, omega0_b=0.02233, omega0_cdm=0.11933, k_max=10.0, n_s=0.9665, sigma_8=0.8102, verbose=False, gauge='sync', output='mPk', **kwargs):
@@ -174,79 +179,3 @@ class TimeDep:
             B = quad(lambda z_prime: super_conformal(z_prime, z)*np.power(H(z_prime),-1)*A(z_prime)**2, self.zinit, z, epsabs=1e-4)[0]
 
         return B
-
-"""
-
-    def calc_alpha(self, z):
-
-        # Function to calculate \alpha (see documentation for more details)
-
-        self.nz = int(len(z))
-
-        hubble_values = self.cosmo.calc_hubble(z)
-        H = interp(z, hubble_values)
-
-        linear_growth_values = self.cosmo.calc_linear_growth(z)
-        D_1 = interp(z, linear_growth_values)
-
-        D1deriv = np.diff(linear_growth_values)/np.diff(z)
-        D1deriv_func = interp(z[0:self.nz-1], D1deriv)
-
-        int3 = np.zeros_like(z)
-
-        for i in range(self.nz):
-
-            int3[i] = quad(lambda t: np.power(H(t), -1), self.zinit, z[i], limit=1000)[0]
-
-        alpha = np.zeros_like(z, dtype=np.float128)
-
-        for i in range(self.nz):
-
-            alpha[i] = 1.0+H(self.zinit)*(D1deriv_func(self.zinit)/D_1(self.zinit))*int3[i]
-
-        return alpha
-
-    def calc_beta(self, z):
-
-        # Function to calculate \beta (see documentation for more details)
-
-        self.nz = int(len(z))
-
-        hubble_values = cosmo.calc_hubble(z)
-        H = interp(z, hubble_values)
-
-        linear_growth_values = cosmo.calc_linear_growth(z)
-        D_1 = interp(z, linear_growth_values)
-
-        beta = np.zeros_like(z, dtype=np.float128)
-
-        for i in range(self.nz):
-
-            beta[i] = dblquad(lambda s, p: np.power(H(s), -1)*(D_1(p)/D_1(self.zinit))*np.power(H(p)*cosmo.scale_factor(p), -1), self.zinit, z[i], lambda p: p, lambda p:z, epsabs=1e-4)[0]
-
-        return beta
-
-    def calc_gamma(self,z):
-
-        # Function to calculate \gamma (see documentation for more details)
-
-        self.nz = int(len(z))
-
-        if self.nz < 1000:
-
-            return print('For convergence please use 1000 or more redshift values')
-
-        hubble_values = cosmo.calc_hubble(z)
-        H = interp(z, hubble_values)
-
-        linear_growth_values = cosmo.calc_linear_growth(z)
-        D_1 = interp(z, linear_growth_values)
-
-        gamma = np.zeros_like(z,dtype=np.float128)
-
-        for i in range(self.nz):
-
-            gamma[i] = dblquad(lambda s,p: np.power(H(s),-1)*(D_1(p)/D_1(self.zinit))*np.power(H(p)*cosmo.scale_factor(p),-1)*calc_alpha(p), self.zinit, z, lambda p: p, lambda p: z, epsabs=1e-4)[0]
-
-        return gamma
-"""

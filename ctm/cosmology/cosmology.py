@@ -3,15 +3,16 @@ import sys
 import classylss
 import classylss.binding as CLASS
 
+
 class Cosmo:
 
     """
     Class to calculate cosmological functions
 
-    - k_max = the maximum k value,
-    - h = H_0/100,
-    - omega0_b = $\Omega_bh^2$ the baryon density today,
-    - omega0_cdm = $\Omega_cdmh^2$ the CDM density today,
+    - k_max = the maximum k value used when calculating the power spectra
+    - h = H_0/100
+    - omega0_b = $\Omega_bh^2$ the baryon density today
+    - omega0_cdm = $\Omega_cdmh^2$ the CDM density today
     - n_s = the spectral index
     - gauge = the perturbation gauge used
 
