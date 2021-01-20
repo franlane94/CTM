@@ -75,14 +75,13 @@ CTM().ctm_power(epsilon=0.01, z_init=150.0, k_c=5.0)
 | ------------- |:-------------:|:--------------|
 | <img src="https://latex.codecogs.com/gif.latex?n_k" />  | 3000| Number of k values used in calculation of the power spectrum |
 | <img src="https://latex.codecogs.com/gif.latex?\epsilon_\mathrm{BZ}" />  | 1.0   | The value of the expansion parameter|
-| <img src="https://latex.codecogs.com/gif.latex?z_{init}" />      | 100.0      | The value of the initial redshift from which the time dependence is integrated from |
+| <img src="https://latex.codecogs.com/gif.latex?z_\mathrm{init}" />      | 100.0      | The value of the initial redshift from which the time dependence is integrated from |
 | <img src="https://latex.codecogs.com/gif.latex?k_c" />      | 0.0   | The value of the cutoff k value for using an initial Gaussian damped power spectrum |
 
-The range of values for the GCTM parameters are:
+The range of values for the CTM parameters are:
 
-<img src="https://latex.codecogs.com/gif.latex?0\leq\epsilon\leq1" />
+<img src="https://latex.codecogs.com/gif.latex?0\leq\epsilon_\mathrm{BZ}\leq1" />
 <img src="https://latex.codecogs.com/gif.latex?0\leq{k_c}\leq50" />
-<img src="https://latex.codecogs.com/gif.latex?-1\leq\mu_k\leq1" />
 
 ## Documentation
 
