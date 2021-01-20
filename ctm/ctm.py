@@ -11,34 +11,34 @@ class CTM:
 
     Cosmological Parameters:
 
-    min_k = the minimum k value,
-    max_k = the maximum k value,
-    min_k_calc = the minimum k value used in the calculation,
-    max_k_calc = the maximum k value used in the calculation,
-    nk = the number of k values,
-    h = H_0/100,
-    omega0_b = $\Omega_bh^2$ the baryon density today,
-    omega0_cdm = $\Omega_cdmh^2$ the CDM density today,
-    n_s = the spectral index
+    - min_k = the minimum k value,
+    - max_k = the maximum k value,
+    - nk = the number of k values,
+    - h = H_0/100,
+    - omega0_b = $\Omega_bh^2$ the baryon density today,
+    - omega0_cdm = $\Omega_cdmh^2$ the CDM density today,
+    - n_s = the spectral index
 
     Zel'dovich Parameters:
 
-    input_k = input k values (if you do not specify then automatic k values are returned)
-    input_P = input P values at z=0 you must also specify the k values used to calculate input_P
-    z_val = the redshift value at which the Zel'dovich power spectrum will be calculated
+    - input_k = input k values (if you do not specify then automatic k values are returned)
+    - input_P = input P values at z=0 you must also specify the k values used to calculate input_P
+    - z_val = the redshift value at which the Zel'dovich power spectrum will be calculated
+    - k_c = cutoff k value if using an initial Gaussian damped power spectrum
+    - n_val = the number of spherical Bessel functions summed over (n_val=32.)
 
     CTM Parameters:
 
-    k_c = cutoff k value if using an initial Gaussian damped power spectrum
-    input_k = input k values (if you do not specify then automatic k values are returned)
-    input_P = input P values at zinit you must also specify the k values used to calculate input_P as input_k_init. Note if your initial z is not zinit=99 then you must also specify z_init unless you have passed input_A
-    input_k_init = input k values at which the input_P power spectrum is calculated at
-    z_val = the redshift value at which the GCTM power spectrum will be calculated
-    epsilon = the expansion parameter (controls the size of the non-linear correction)
-    z_init = the initial redshift value the time dependent factors are integrated from
-    input_z = input z values
-    input_A = input A values you must also specify the z values used to calculate input_A
-    input_B = input B values you must also specify the z values used to calculate input_B
+    - k_c = cutoff k value if using an initial Gaussian damped power spectrum
+    - input_k = input k values (if you do not specify then automatic k values are returned)
+    - input_P = input P values at zinit you must also specify the k values used to calculate input_P as input_k_init. Note if your initial z is not z_init=100 then you must also specify z_init unless you have passed input_A
+    - input_k_init = input k values at which the input_P power spectrum is calculated at
+    - z_val = the redshift value at which the CTM power spectrum will be calculated
+    - epsilon = the expansion parameter which controls the size of the second-order CTM terms (epsilon=1)
+    - z_init = the initial redshift value the time dependent factors are integrated from (z_init=100)
+    - input_z = input z values
+    - input_A = input A values you must also specify the z values used to calculate input_A
+    - input_B = input B values you must also specify the z values used to calculate input_B
 
     """
 
@@ -77,8 +77,6 @@ class CTM:
     def zeldovich_power(self, n_val=32, z_val=0.0, kc=0.0, input_k=np.zeros(10), input_P=np.zeros(10), save=False):
 
         # Function to calculate the Zel'dovich power spectrum in real space
-
-        # To save the output power spectrum set save=True
 
         return LPTPower(min_k=self.min_k, max_k=self.max_k, nk=self.nk, h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_zeldovich_power(n_val=n_val, z_val=z_val, kc=kc, input_k=input_k, input_P=input_P, save=save)
 
