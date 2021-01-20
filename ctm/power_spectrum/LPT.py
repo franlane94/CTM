@@ -21,7 +21,7 @@ class LPTPower:
 
     """
 
-    Class the calculate the Zel'dovich power spectrum
+    Class to calculate the Zel'dovich power spectrum
 
     Parameters:
 
@@ -35,11 +35,11 @@ class LPTPower:
     - k_max is the maximum k value used when calculating the power spectrum
 
     - z_val is the redshift value at which the Zel'dovich power spectrum is calculated
-    - input_k are user specified input k values
+    - input_k are user specified input k values (if you do not specify then automatic k values are returned)
     - input_P is an input power spectrum at z=0 if this is given then the k values used to calculate input_P must also be given as input_k
     - k_c is the cutoff k value if using an initial Gaussian damped power spectrum
     - n_val is the number of spherical Bessel functions summed over
-    
+
     """
 
     def __init__(self, min_k, max_k, nk, h, omega0_b, omega0_cdm, n_s, sigma_8, verbose, gauge, output, **kwargs):
@@ -56,7 +56,7 @@ class LPTPower:
         self.min_k = min_k
         self.max_k = max_k
 
-        # Define the k vector for loop integrals
+        # Define the k vector for the integrals
 
         self.k = np.logspace(np.log10(self.min_k), np.log10(self.max_k), self.nk)
 
@@ -103,7 +103,7 @@ class LPTPower:
 
             P_func = interp(self.k, P_vals)
 
-            k_calc = self.k
+            k_int = self.k
 
             nk_calc = self.nk
 
@@ -113,7 +113,7 @@ class LPTPower:
 
         # Calculate the covariances
 
-        sigma_psi, q_vals, X_vals, Y_vals, eta_E, sigma_0, D_vals, F_vals, G_vals = calc_covariances_func(k_calc, P_func)
+        sigma_psi, q_vals, X_vals, Y_vals, eta_E, sigma_0, D_vals, F_vals, G_vals = calc_covariances_func(k_int, P_func)
 
         print("Calculated the covariances")
 
@@ -127,19 +127,19 @@ class LPTPower:
 
         # Begin calculating the Zel'dovich power spectrum
 
-        P_calculated = np.zeros_like(k_calc)
+        P_calculated = np.zeros_like(k_int)
 
         for i in range(nk_calc):
 
             progress_func_power(i, nk_calc)
 
-            P_calculated[i] = PowerIntegral().calc_power_rs(n_val, k_calc[i], P_func, q_vals, A, front, exponent_k_squared, zero_lag_1, sigma_psi, max_k_calc)
+            P_calculated[i] = PowerIntegral().calc_power_rs(n_val, k_int[i], P_func, q_vals, A, front, exponent_k_squared, zero_lag_1, sigma_psi, max_k_int)
 
         time.stop()
 
         if input_k.all() != 0.0:
 
-            P_calculated_func = interp(k_calc, P_calculated)
+            P_calculated_func = interp(k_int, P_calculated)
             P_return = P_calculated_func(input_k)
 
             if save is True:
@@ -162,4 +162,4 @@ class LPTPower:
 
                         file.writelines(str(P_calculated[i])+'\n')
 
-            return k_calc, P_calculated
+            return k_int, P_calculated

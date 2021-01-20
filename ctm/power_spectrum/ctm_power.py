@@ -22,22 +22,24 @@ class PowerSpec:
 
     Parameters:
 
-    min_k = the minimum k value,
-    max_k = the maximum k value,
-    nk = the number of k values,
-    h = H_0/100,
-    omega0_b = $\Omega_bh^2$ the baryon density today,
-    omega0_cdm = $\Omega_cdmh^2$ the CDM density today,
-    n_s = the spectral index
-    k_c = cutoff k value if using an initial Gaussian damped power spectrum
-    input_k = input k values (if you do not specify then automatic k values are returned)
-    input_P = input P values at z=0 you must also specify the k values used to calculate input_P
-    z_val = the redshift value at which the GCTM power spectrum will be calculated
-    epsilon = the expansion parameter (controls the size of the non-linear correction)
-    z_init = the initial redshift value the time dependent factors are integrated from
-    input_z = input z values
-    input_A = input A values you must also specify the z values used to calculate input_A
-    input_B = input B values you must also specify the z values used to calculate input_B
+    - min_k = the minimum k value,
+    - max_k = the maximum k value,
+    - nk = the number of k values,
+    - h = H_0/100,
+    - omega0_b = $\Omega_bh^2$ the baryon density today,
+    - omega0_cdm = $\Omega_cdmh^2$ the CDM density today,
+    - n_s = the spectral index
+
+    - k_c = cutoff k value if using an initial Gaussian damped power spectrum
+    - input_k are user specified input k values (if you do not specify then automatic k values are returned)
+    - input_P is an input power spectrum at z=0 if this is given then the k values used to calculate input_P must also be given as input_k
+    - z_val = the redshift value at which the CTM power spectrum will be calculated
+    - epsilon = the expansion parameter which controls the size of the second-order CTM term
+    - z_init = the initial redshift value the time dependent factors are integrated from
+    - input_z = input z values
+    - input_A = input A values you must also specify the z values used to calculate input_A
+    - input_B = input B values you must also specify the z values used to calculate input_B
+    - n_val is the number of spherical Bessel functions summed over
 
     """
 
@@ -55,13 +57,17 @@ class PowerSpec:
         self.min_k = min_k
         self.max_k = max_k
 
+        # Define the k vector for the integrals
+
         self.k_int = np.logspace(np.log10(self.min_k), np.log10(self.max_k), self.nk)
+
+        # Initialise classylss
 
         self.cosmo = Cosmo(self.h, self.omega0_b, self.omega0_cdm, self.max_k+1.0, self.n_s, self.sigma_8, self.verbose, self.gauge, self.output)
 
     def calc_ctm_power(self, n_val=32., zinit=100.0, z_val=0.0, epsilon=1.0, save=False, kc=0.0, input_k=np.zeros(10), input_k_init=np.zeros(10), input_P=np.zeros(10), input_z=np.zeros(10), input_A=np.zeros(10), input_B=np.zeros(10)):
 
-        # Function to calculate the GCTM power spectrum
+        # Function to calculate the CTM power spectrum
 
         time = Timer()
         time.start()
