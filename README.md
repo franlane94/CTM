@@ -77,6 +77,7 @@ CTM().ctm_power(epsilon=0.01, z_init=150.0, k_c=5.0)
 | <img src="https://latex.codecogs.com/gif.latex?\epsilon_\mathrm{BZ}" />  | 1.0   | The value of the expansion parameter|
 | <img src="https://latex.codecogs.com/gif.latex?z_\mathrm{init}" />      | 100.0      | The value of the initial redshift from which the time dependence is integrated from |
 | <img src="https://latex.codecogs.com/gif.latex?k_c" />      | 0.0   | The value of the cutoff k value for using an initial Gaussian damped power spectrum |
+| <img src="https://latex.codecogs.com/gif.latex?n_\mathrm{val}" />      | 32   | The number of spherical Bessel functions used in the calculation |
 
 The range of values for the CTM parameters are:
 
