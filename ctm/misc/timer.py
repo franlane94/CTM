@@ -1,8 +1,7 @@
 import time
 import numpy as np
 
-# Class used to time various processes
-
+#https://realpython.com/python-timer/
 
 class TimerError(Exception):
     """A custom exception used to report errors in use of Timer class"""
