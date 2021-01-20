@@ -4,7 +4,7 @@ A Python code to compute the power spectrum and 2-point correlation function in 
 
 Please see the [Wiki](https://github.com/franlane94/CTM/wiki) for more details
 
-**Any queries please email**: <flane@roe.ac.uk>
+**Any queries please email**: <ctmcodehelp@gmail.com>
 
 ## Installation
 
@@ -85,18 +85,8 @@ The range of values for the CTM parameters are:
 
 ## Documentation
 
-### Example Jupyter Notebooks
+### Example Jupyter Notebook
 
-Example notebooks can be found in the folder Examples
+An example notebook can be found in the folder Examples
 
-**Real-space examples**: [GCTM_real_space_examples.ipynb](https://github.com/franlane94/GCTM/blob/master/Examples/GCTM_real_space_examples.ipynb)
-
-**Redshift-space examples**: [GCTM_redshift_space_examples.ipynb](https://github.com/franlane94/GCTM/blob/master/Examples/GCTM_redshift_space_examples.ipynb)
-
-### Example Python scripts
-
-Example Python scripts can be found in the folder Examples
-
-**Real-space examples**: [GCTM_real_space_examples.py](https://github.com/franlane94/GCTM/blob/master/Examples/GCTM_real_space_examples.py)
-
-**Redshift-space examples**: [GCTM_redshift_space_examples.py](https://github.com/franlane94/GCTM/blob/master/Examples/GCTM_redshift_space_examples.py)
+**Real-space examples**: [CTM_real_space_examples.ipynb](https://github.com/franlane94/CTM/blob/master/Examples/CTM_real_space_examples.ipynb)
