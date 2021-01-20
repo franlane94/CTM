@@ -3,21 +3,26 @@ import sys
 import classylss
 import classylss.binding as CLASS
 
-# Parameters: h is the Hubble constant, omega0_b is the baryon fraction today,
-# omega0_cdm is the CDM fraction today,
-# k_max is the maximum k value used when calculating the power spectra,
-# n_s is the spectral index
-
-
 class Cosmo:
 
     """
     Class to calculate cosmological functions
+
+    - k_max = the maximum k value,
+    - h = H_0/100,
+    - omega0_b = $\Omega_bh^2$ the baryon density today,
+    - omega0_cdm = $\Omega_cdmh^2$ the CDM density today,
+    - n_s = the spectral index
+    - gauge = the perturbation gauge used
+
+    - z_val = the redshift value or values to calculate the function at
+    - k = the k values to calculate the function at
+
     """
 
     def __init__(self, h, omega0_b, omega0_cdm, k_max, n_s, sigma_8, verbose, gauge, output, **kwargs):
 
-        # Read in the cosmological parameters as defined in gctm.py
+        # Read in the cosmological parameters as defined in ctm.py
 
         self.h = h
         self.omega0_b = omega0_b

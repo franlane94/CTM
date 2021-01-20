@@ -7,11 +7,14 @@ class CTM:
 
     """
 
-    Class to calculate the GCTM power spectrum
+    Class to calculate the CTM power spectrum
 
     Cosmological Parameters:
+
     min_k = the minimum k value,
     max_k = the maximum k value,
+    min_k_calc = the minimum k value used in the calculation,
+    max_k_calc = the maximum k value used in the calculation,
     nk = the number of k values,
     h = H_0/100,
     omega0_b = $\Omega_bh^2$ the baryon density today,
@@ -24,7 +27,7 @@ class CTM:
     input_P = input P values at z=0 you must also specify the k values used to calculate input_P
     z_val = the redshift value at which the Zel'dovich power spectrum will be calculated
 
-    GCTM Parameters:
+    CTM Parameters:
 
     k_c = cutoff k value if using an initial Gaussian damped power spectrum
     input_k = input k values (if you do not specify then automatic k values are returned)
