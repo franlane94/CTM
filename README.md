@@ -35,7 +35,6 @@ The CTM module can be installed using
 
 ```
 pip install ctm
-
 ```
 
 if this method is used then `mcfit` and `classylss` will be automatically installed if they have not previously been installed. To check the code has been installed properly run in the terminal
@@ -69,16 +68,15 @@ CTM(omega0_cdm=0.25, omega0_b=0.05, h=0.7, n_s=0.96, sigma_8=0.8)
 The following CTM parameters can be specified by the user using
 
 ```
-GCTM().gctm_power(epsilon=0.01, z_init=150.0, k_c=5.0)
+CTM().ctm_power(epsilon=0.01, z_init=150.0, k_c=5.0)
 ```
 
 | Parameter     |  Automatic Value | Description |
 | ------------- |:-------------:|:--------------|
 | <img src="https://latex.codecogs.com/gif.latex?n_k" />  | 3000| Number of k values used in calculation of the power spectrum |
-| <img src="https://latex.codecogs.com/gif.latex?\epsilon" />  | 1  .0   | The value of the expansion parameter|
-| <img src="https://latex.codecogs.com/gif.latex?z_{init}" />      | 99.0      | The value of the initial redshift from which the time dependence is integrated from |
+| <img src="https://latex.codecogs.com/gif.latex?\epsilon_\mathrm{BZ}" />  | 1.0   | The value of the expansion parameter|
+| <img src="https://latex.codecogs.com/gif.latex?z_{init}" />      | 100.0      | The value of the initial redshift from which the time dependence is integrated from |
 | <img src="https://latex.codecogs.com/gif.latex?k_c" />      | 0.0   | The value of the cutoff k value for using an initial Gaussian damped power spectrum |
-| <img src="https://latex.codecogs.com/gif.latex?\mu_k" />      | 0.0 | The value of the line-of-sight parameter for calculating the redshift-space power spectrum |
 
 The range of values for the GCTM parameters are:
 
