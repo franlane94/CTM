@@ -42,12 +42,10 @@ class CTM:
 
     """
 
-    def __init__(self, min_k=1e-7, max_k=2e3, min_k_calc=1e-5, max_k_calc=100.0, nk=3000, h=0.6737, omega0_b=0.02233, omega0_cdm=0.11933, n_s=0.9665, sigma_8=0.8102, verbose=False, gauge='sync', output='mPk', **kwargs):
+    def __init__(self, min_k=1e-5, max_k=100.0, nk=3000, h=0.6737, omega0_b=0.02233, omega0_cdm=0.11933, n_s=0.9665, sigma_8=0.8102, verbose=False, gauge='sync', output='mPk', **kwargs):
 
         self.min_k = min_k
         self.max_k = max_k
-        self.min_k_zel = min_k_calc
-        self.max_k_zel = max_k_calc
         self.nk = nk
         self.h = h
         self.omega0_b = omega0_b
@@ -62,19 +60,19 @@ class CTM:
 
         # Function to calculate the linear growth factor using Classylss
 
-        return Cosmo(h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, k_max=self.max_k_zel, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_linear_growth(z_val=z_val)
+        return Cosmo(h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, k_max=self.max_k, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_linear_growth(z_val=z_val)
 
     def independent_linear_growth_factor(self, z_val=0.0):
 
         # Function to calculate the linear growth factor using Classylss
 
-        return Cosmo(h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, k_max=self.max_k_zel, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_independent_linear_growth(z_val=z_val)
+        return Cosmo(h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, k_max=self.max_k, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_independent_linear_growth(z_val=z_val)
 
     def linear_power(self, input_k, z_val=0.0):
 
         # Function to calculate the linear power spectrum using Classylss
 
-        return Cosmo(h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, k_max=self.max_k_zel, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_linear_power(input_k, z_val=z_val)
+        return Cosmo(h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, k_max=self.max_k, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_linear_power(input_k, z_val=z_val)
 
     def zeldovich_power(self, n_val=32, z_val=0.0, kc=0.0, input_k=np.zeros(10), input_P=np.zeros(10), save=False):
 
@@ -82,7 +80,7 @@ class CTM:
 
         # To save the output power spectrum set save=True
 
-        return LPTPower(min_k=self.min_k, max_k=self.max_k, min_k_zel=self.min_k_zel, max_k_zel=self.max_k_zel, nk=self.nk, h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_zeldovich_power(n_val=n_val, z_val=z_val, kc=kc, input_k=input_k, input_P=input_P, save=save)
+        return LPTPower(min_k=self.min_k, max_k=self.max_k, nk=self.nk, h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_zeldovich_power(n_val=n_val, z_val=z_val, kc=kc, input_k=input_k, input_P=input_P, save=save)
 
     def ctm_power(self,  n_val=32, zinit=100.0, z_val=0.0, epsilon=1.0, save=False, kc=0.0, input_k=np.zeros(10), input_P=np.zeros(10), input_k_init=np.zeros(10), input_z=np.zeros(10), input_A=np.zeros(10), input_B=np.zeros(10)):
 
@@ -91,4 +89,4 @@ class CTM:
 
         # If no A and B functions are specified the Beyond Zel'dovich approximation is used. See the Documentation for details
 
-        return PowerSpec(min_k=self.min_k_zel, max_k=10.0, nk=self.nk, h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_ctm_power(n_val=n_val, zinit=zinit, z_val=z_val, epsilon=epsilon, save=save, kc=kc, input_k=input_k, input_P=input_P, input_k_init=input_k_init, input_z=input_z, input_A=input_A, input_B=input_B)
+        return PowerSpec(min_k=self.min_k, max_k=10.0, nk=self.nk, h=self.h, omega0_b=self.omega0_b, omega0_cdm=self.omega0_cdm, n_s=self.n_s, sigma_8=self.sigma_8, verbose=self.verbose, gauge=self.gauge, output=self.output).calc_ctm_power(n_val=n_val, zinit=zinit, z_val=z_val, epsilon=epsilon, save=save, kc=kc, input_k=input_k, input_P=input_P, input_k_init=input_k_init, input_z=input_z, input_A=input_A, input_B=input_B)
