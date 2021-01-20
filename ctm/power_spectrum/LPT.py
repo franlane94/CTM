@@ -133,7 +133,7 @@ class LPTPower:
 
             progress_func_power(i, nk_calc)
 
-            P_calculated[i] = PowerIntegral().calc_power_rs(n_val, k_int[i], P_func, q_vals, A, front, exponent_k_squared, zero_lag_1, sigma_psi, max_k_int)
+            P_calculated[i] = PowerIntegral().calc_power_rs(n_val, k_int[i], P_func, q_vals, A, front, exponent_k_squared, zero_lag_1, sigma_psi, max_k_calc)
 
         time.stop()
 
