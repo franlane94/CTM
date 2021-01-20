@@ -1,4 +1,4 @@
-# Cosmological Trajectories Method (GCTM) code
+# Cosmological Trajectories Method (CTM) code
 
 A Python code to compute the power spectrum and 2-point correlation function in real and redshift space using second-order CTM.
 
@@ -34,12 +34,11 @@ pip install classylss
 The CTM module can be installed using
 
 ```
-
 pip install ctm
 
 ```
 
-if this method is used then `mcfit` and `classylss` will be automatically installed if they have not previously been installed. To check the code has been installed properly run
+if this method is used then `mcfit` and `classylss` will be automatically installed if they have not previously been installed. To check the code has been installed properly run in the terminal
 
 ```
 python
@@ -53,6 +52,9 @@ from ctm import CTM
 
 The following parameters can be specified by the user using
 
+```
+CTM(omega0_cdm=0.25, omega0_b=0.05, h=0.7, n_s=0.96, sigma_8=0.8)
+```
 
 | Parameter     |  Automatic Value |
 | ------------- |:-------------:|
@@ -62,12 +64,13 @@ The following parameters can be specified by the user using
 | <img src="https://latex.codecogs.com/gif.latex?n_s" />      | 0.9665    |
 | <img src="https://latex.codecogs.com/gif.latex?\sigma_8" />      | 0.8102  |
 
-```
-CTM(omega0_cdm=0.25, omega0_b=0.05, h=0.7, n_s=0.96, sigma_8=0.8)
-```
 ### CTM parameters
 
 The following CTM parameters can be specified by the user using
+
+```
+GCTM().gctm_power(epsilon=0.01, z_init=150.0, k_c=5.0)
+```
 
 | Parameter     |  Automatic Value | Description |
 | ------------- |:-------------:|:--------------|
@@ -76,10 +79,6 @@ The following CTM parameters can be specified by the user using
 | <img src="https://latex.codecogs.com/gif.latex?z_{init}" />      | 99.0      | The value of the initial redshift from which the time dependence is integrated from |
 | <img src="https://latex.codecogs.com/gif.latex?k_c" />      | 0.0   | The value of the cutoff k value for using an initial Gaussian damped power spectrum |
 | <img src="https://latex.codecogs.com/gif.latex?\mu_k" />      | 0.0 | The value of the line-of-sight parameter for calculating the redshift-space power spectrum |
-
-```
-GCTM().gctm_power(epsilon=0.01, z_init=150.0, k_c=5.0)
-```
 
 The range of values for the GCTM parameters are:
 
