@@ -1,8 +1,8 @@
-# General Cosmological Trajectories Method (GCTM) code
+# Cosmological Trajectories Method (GCTM) code
 
-A Python code to compute the power spectrum and 2-point correlation function in real and redshift space using the GCTM.
+A Python code to compute the power spectrum and 2-point correlation function in real and redshift space using second-order CTM.
 
-Please see the [Wiki](https://github.com/franlane94/GCTM/wiki) for more details
+Please see the [Wiki](https://github.com/franlane94/CTM/wiki) for more details
 
 **Any queries please email**: <flane@roe.ac.uk>
 
@@ -29,25 +29,23 @@ pip install classylss
 ```
 ***
 
-### Installation of GCTM code
+### Installation of the CTM module
 
-Once these dependencies have been installed use
-
-```
-git clone https://github.com/franlane94/GCTM
-```
-
-to install the GCTM code. Then navigate to your .bash_profile (or .profile on Linux machines) script and add the following line
+The CTM module can be installed using
 
 ```
-export PYTHONPATH="$PYTHONPATH:/DIRECTORY_WHERE_GCTM_IS_INSTALLED"
+
+pip install ctm
+
 ```
-To check the code has been installed properly run
+
+if this method is used then `mcfit` and `classylss` will be automatically installed if they have not previously been installed. To check the code has been installed properly run
 
 ```
 python
-from GCTM.gctm import GCTM
+from ctm import CTM
 ```
+
 ***
 
 ## Parameters
@@ -58,18 +56,18 @@ The following parameters can be specified by the user using
 
 | Parameter     |  Automatic Value |
 | ------------- |:-------------:|
-| <img src="https://latex.codecogs.com/gif.latex?\Omega_{cdm}h^2" />  | 0.11977|
+| <img src="https://latex.codecogs.com/gif.latex?\Omega_{cdm}h^2" />  | 0.11933|
 | <img src="https://latex.codecogs.com/gif.latex?\Omega_bh^2" />  | 0.02233     |
 | <img src="https://latex.codecogs.com/gif.latex?h" />      | 0.6737      |
-| <img src="https://latex.codecogs.com/gif.latex?n_s" />      | 0.9652    |
-| <img src="https://latex.codecogs.com/gif.latex?\sigma_8" />      | 0.8101  |
+| <img src="https://latex.codecogs.com/gif.latex?n_s" />      | 0.9665    |
+| <img src="https://latex.codecogs.com/gif.latex?\sigma_8" />      | 0.8102  |
 
 ```
-GCTM(omega0_cdm=0.25, omega0_b=0.05, h=0.7, n_s=0.96, sigma_8=0.8)
+CTM(omega0_cdm=0.25, omega0_b=0.05, h=0.7, n_s=0.96, sigma_8=0.8)
 ```
-### GCTM parameters
+### CTM parameters
 
-The following GCTM parameters can be specified by the user using
+The following CTM parameters can be specified by the user using
 
 | Parameter     |  Automatic Value | Description |
 | ------------- |:-------------:|:--------------|
