@@ -26,7 +26,7 @@ class TimeDep:
 
     - k = the k values to calculate the function at
     - z = the redshift value or values to calculate the time dependent functions at
-    
+
     """
 
     def __init__(self, zinit=100.0, h=0.6737, omega0_b=0.02233, omega0_cdm=0.11933, k_max=10.0, n_s=0.9665, sigma_8=0.8102, verbose=False, gauge='sync', output='mPk', **kwargs):
@@ -53,7 +53,9 @@ class TimeDep:
 
     def calc_zeta(self, z):
 
-        # Function to calculate \zeta (see documentation for more details)
+        """
+        Function to calculate \zeta (see documentation for more details)
+        """
 
         if type(z) == np.ndarray:
 
@@ -116,7 +118,9 @@ class TimeDep:
 
     def calc_B(self, A_vals, z):
 
-        # Function to calculate a general B(z) (see documentation for more details)
+        """
+        Function to calculate a general B(z) (see documentation for more details)
+        """
 
         if type(z) == np.ndarray:
 

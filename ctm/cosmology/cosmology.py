@@ -41,13 +41,17 @@ class Cosmo:
 
     def scale_factor(self, z_val):
 
-        # Function to calculate the scale factor a=(1+z)^{-1}
+        """
+        Function to calculate the scale factor a=(1+z)^{-1}
+        """
 
         return np.power(1.0+z_val, -1)
 
     def calc_hubble(self, z_val):
 
-        # Function to calculate the Hubble function H(z)
+        """
+        Function to calculate the Hubble function H(z)
+        """
 
         H0 = self.h*100.0
 
@@ -59,7 +63,9 @@ class Cosmo:
 
     def calc_linear_growth(self, z_val):
 
-        # Function to calculate the linear growth factor D_1
+        """
+        Function to calculate the linear growth factor D_1
+        """
 
         bg = CLASS.Background(self.engine)
 
@@ -69,7 +75,9 @@ class Cosmo:
 
     def calc_independent_linear_growth(self, z_val):
 
-        # Function to calculated f=dlnD_1/dlna
+        """
+        Function to calculated f=dlnD_1/dlna
+        """
 
         bg = CLASS.Background(self.engine)
 
@@ -79,7 +87,9 @@ class Cosmo:
 
     def calc_linear_power(self, k,  z_val=0.0):
 
-        # Function to calculate the linear power spectrum
+        """
+        Function to calculate the linear power spectrum
+        """
 
         bg = CLASS.Background(self.engine)
 
@@ -93,12 +103,16 @@ class Cosmo:
 
     def Omega_m(self):
 
-        # Function to calculate \Omega_m
+        """
+        Function to calculate \Omega_m
+        """
 
         return (self.omega0_cdm+self.omega0_b)/self.h**2
 
     def H0(self):
 
-        # Function to calculate H0
+        """
+        Function to calculate H0
+        """
 
         return self.h*100.0

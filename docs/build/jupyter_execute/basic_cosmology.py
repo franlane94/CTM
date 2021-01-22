@@ -22,7 +22,7 @@ linestyles = ["-", "--", "-.", ":"]
 
 import numpy as np
 import matplotlib.pyplot as plt
-from gctm import Cosmo
+from ctm import Cosmo
 
 # Define the redshift values
 

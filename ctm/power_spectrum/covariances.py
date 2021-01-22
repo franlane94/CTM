@@ -17,8 +17,10 @@ renorm = np.sqrt(0.5*np.pi)
 
 def calc_covariances_func(k, P):
 
-    # Function to calculate the covariances X, Y, D, F, G, \sigma_psi,
-    #  \sigma_0 and \eta_E for an input power spectrum
+    """
+    Function to calculate the covariances X, Y, D, F, G, \sigma_psi,
+    \sigma_0 and \eta_E for an input power spectrum
+    """
 
     sigma_psi = calc_sigma_psi(k, P)
     q_vals, X_vals, Y_vals = calc_X_and_Y(k, P, sigma_psi)
@@ -33,8 +35,10 @@ def calc_covariances_func(k, P):
 
 def dosph(n, x, f, a, tilt=1.5):
 
-    # Function to calculate spherical Bessel integrals returns q values and integral values
-    # Parameters: n = order of Bessel, x = variable of the function, f = function integrating over, a = power law
+    """
+    Function to calculate spherical Bessel integrals returns q values and integral values
+    Parameters: n = order of Bessel, x = variable of the function, f = function integrating over, a = power law
+    """
 
     func = renorm*np.power(x, a)*f(x)
 
@@ -43,7 +47,9 @@ def dosph(n, x, f, a, tilt=1.5):
 
 def calc_sigma_psi(k, P):
 
-    # Function to calculate the variance of the displacement field \sigma^2{\psi} = \frac{1}{6\pi^2}\int{dkP_L\left(k)}
+    """
+    Function to calculate the variance of the displacement field \sigma^2{\psi} = \frac{1}{6\pi^2}\int{dkP_L\left(k)}
+    """
 
     q, I0 = dosph(0, k, P, -2)
     sigma_vals = npi2*I0/6.0
@@ -56,7 +62,9 @@ def calc_sigma_psi(k, P):
 
 def calc_X_and_Y(k, P, sigma):
 
-    # Function to calculate X and Y where X = \frac{1}{2\pi^2}\int{dk[\frac{2}{3}-\frac{j_1(kq)}{kq}]P_L} and Y = \frac{1}{2\pi^2}\int{dk[6\frac{j_1(kq)}{kq}-j_0(kq)]P_L} and sigma is \sigma^2_{\psi}
+    """
+    Function to calculate X and Y where X = \frac{1}{2\pi^2}\int{dk[\frac{2}{3}-\frac{j_1(kq)}{kq}]P_L} and Y = \frac{1}{2\pi^2}\int{dk[6\frac{j_1(kq)}{kq}-j_0(kq)]P_L} and sigma is \sigma^2_{\psi}
+    """
 
     q, I0 = dosph(0, k, P, -2)
     _, I2 = dosph(2, k, P, -2)
@@ -69,7 +77,9 @@ def calc_X_and_Y(k, P, sigma):
 
 def calc_eta(k, P):
 
-    # Function to calculate eta^2_E = \frac{1}{6\pi^2}\int{dk}k^2P_L
+    """
+    Function to calculate eta^2_E = \frac{1}{6\pi^2}\int{dk}k^2P_L
+    """
 
     q, I0 = dosph(0, k, P, 0)
     eta_vals = npi2*I0/6.0
@@ -81,7 +91,9 @@ def calc_eta(k, P):
 
 def calc_D_and_F(k, P):
 
-    # Function to calculate D=\frac{1}{2\pi^2}\int{dk kj_3(kq)P_L} and F=-\frac{1}{2\pi^2}\int{dk kj_2(kq)/kqP_L} and sigma^2_0=\frac{1}{\left(2\pi\right)^3}\int{dk}e^{-ik\cdotq}P_L
+    """
+    Function to calculate D=\frac{1}{2\pi^2}\int{dk kj_3(kq)P_L} and F=-\frac{1}{2\pi^2}\int{dk kj_2(kq)/kqP_L} and sigma^2_0=\frac{1}{\left(2\pi\right)^3}\int{dk}e^{-ik\cdotq}P_L
+    """
 
     q, I0 = dosph(0, k, P, 0)
     _, I2 = dosph(2, k, P, 0)
@@ -94,7 +106,9 @@ def calc_D_and_F(k, P):
 
 def calc_G(k, P):
 
-    # Function to calculate G=-\frac{1}{2\pi^2}\int{dk kj_1(kq)kP_L}
+    """
+    Function to calculate G=-\frac{1}{2\pi^2}\int{dk kj_1(kq)kP_L}
+    """
 
     q, I1 = dosph(1, k, P, -1)
 

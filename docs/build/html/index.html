@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to the GCTM module’s documentation! &mdash; The General Cosmological Trajectories Method (GCTM) module 1 documentation</title>
+  <title>Welcome to the CTM module’s documentation! &mdash; The Cosmological Trajectories Method (GCTM) module 1 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="The General Cosmological Trajectories Method (GCTM) module 1 documentation" href="#"/>
+    <link rel="top" title="The Cosmological Trajectories Method (GCTM) module 1 documentation" href="#"/>
         <link rel="next" title="Basic cosmology operations" href="basic_cosmology.html"/> 
 
   
@@ -55,7 +55,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> The General Cosmological Trajectories Method (GCTM) module
+            <a href="#" class="icon icon-home"> The Cosmological Trajectories Method (GCTM) module
           
 
           
@@ -91,8 +91,7 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="basic_cosmology.html">Basic cosmology operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gctm.html">Using the GCTM in real space</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gctm_redshift_space.html">Using the GCTM in redshift space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctm.html">Using the CTM in real space</a></li>
 </ul>
 
             
@@ -107,7 +106,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">The General Cosmological Trajectories Method (GCTM) module</a>
+          <a href="#">The Cosmological Trajectories Method (GCTM) module</a>
         
       </nav>
 
@@ -137,7 +136,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Welcome to the GCTM module’s documentation!</li>
+      <li>Welcome to the CTM module’s documentation!</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,34 +155,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-the-gctm-module-s-documentation">
-<h1>Welcome to the GCTM module’s documentation!<a class="headerlink" href="#welcome-to-the-gctm-module-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>The General Cosmological Trajectories Method (GCTM) is a perturbative technique to compute the power spectrum and two-point correlation function in both real and redshift space in the mildly to non-linear regime for a range of cosmologies.</p>
+  <div class="section" id="welcome-to-the-ctm-module-s-documentation">
+<h1>Welcome to the CTM module’s documentation!<a class="headerlink" href="#welcome-to-the-ctm-module-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>The Cosmological Trajectories Method (GCTM) is a perturbative technique to compute the power spectrum and two-point correlation function in real space in the mildly to non-linear regime for a range of cosmologies.</p>
 <div class="section" id="source-and-installation">
 <h2>Source and installation<a class="headerlink" href="#source-and-installation" title="Permalink to this headline">¶</a></h2>
-<p>The code is available at <a class="reference external" href="https://github.com/franlane94/GCTM">Github</a> but can also be installed using pip (all of the dependencies will be automatically installed)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install gctm
+<p>The code is available at <a class="reference external" href="https://github.com/franlane94/CTM">Github</a> but can also be installed using pip (all of the dependencies will be automatically installed)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install ctm
 </pre></div>
 </div>
 <p>To install the code from source, first run the following</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install mcfit
 pip install classylss
-git clone https://github.com/franlane94/GCTM
+git clone https://github.com/franlane94/CTM
 </pre></div>
 </div>
 <p>Then navigate to your .bash_profile (or .profile on Linux machines) and add the following line</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PYTHONPATH</span><span class="s2">:/DIRECTORY_WHERE_GCTM_IS_INSTALLED&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PYTHONPATH</span><span class="s2">:/DIRECTORY_WHERE_CTM_IS_INSTALLED&quot;</span>
 </pre></div>
 </div>
 <p>To check the module has been installed correctly run</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python
-from gctm import GCTM
+from ctm import CTM
 </pre></div>
 </div>
 </div>
 <div class="section" id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>For a quickstart see the <a class="reference external" href="https://github.com/franlane94/GCTM/tree/master/Examples">Jupyter notebooks</a>. For more detailed examples and information about the code please see the documentation pages.</p>
+<p>For a quickstart see the <a class="reference external" href="https://github.com/franlane94/CTM/tree/master/Examples">Jupyter notebook</a>. For more detailed examples and information about the code please see the documentation pages.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>The units of commonly used variables in this code are:</p>
@@ -227,11 +226,14 @@ from gctm import GCTM
 </div>
 <div class="section" id="citation">
 <h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h2>
-<p>The GCTM code is described in Lane et al. (2020). Please cite this paper if you use this module.</p>
+<p>The CTM module is described in Lane et al. 2021, if you make use of the CTM module, please include a citation to this work in any publications.</p>
+</div>
+<div class="section" id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="help-and-issues">
 <h2>Help and issues<a class="headerlink" href="#help-and-issues" title="Permalink to this headline">¶</a></h2>
-<p>If you encounter any issues please either use the <a class="reference external" href="https://github.com/franlane94/GCTM/issues">Github issues</a>  page, or email <a class="reference external" href="mailto:gctmcode&#37;&#52;&#48;gmail&#46;com">gctmcode<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
+<p>If you encounter any issues please either use the <a class="reference external" href="https://github.com/franlane94/CTM/issues">Github issues</a>  page, or email <a class="reference external" href="mailto:ctmcodehelp&#37;&#52;&#48;gmail&#46;com">ctmcodehelp<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -257,7 +259,7 @@ from gctm import GCTM
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Fran Lane.
+        &copy; Copyright 2021, Fran Lane.
 
     </p>
   </div>

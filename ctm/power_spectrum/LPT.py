@@ -66,7 +66,9 @@ class LPTPower:
 
     def calc_zeldovich_power(self, n_val=32, z_val=0.0, kc=0.0, input_k=np.zeros(10), input_P=np.zeros(10), save=False):
 
-        # Function to calculate the power spectrum for the Zel'dovich approximation using the method presented in 1209.0780 and 1410.1617
+        """
+        Function to calculate the power spectrum for the Zel'dovich approximation using the method presented in 1209.0780 and 1410.1617
+        """
 
         time = Timer()
         time.start()

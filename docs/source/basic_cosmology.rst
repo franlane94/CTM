@@ -1,7 +1,7 @@
 Basic cosmology operations
 =============================
 
-Documention introducing the Cosmo class
+Documentation introducing the Cosmo class
 
 .. py:class:: Cosmo(h, omega0_b, omega0_cdm, k_max, n_s, sigma_8, verbose, gauge, output, **kwargs)
 
@@ -89,7 +89,7 @@ We can plot the linear growth factor for a range of redshifts
 
   import numpy as np
   import matplotlib.pyplot as plt
-  from gctm import Cosmo
+  from ctm import Cosmo
 
   # Define the redshift values
 

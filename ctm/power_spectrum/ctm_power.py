@@ -67,7 +67,9 @@ class PowerSpec:
 
     def calc_ctm_power(self, n_val=32., zinit=100.0, z_val=0.0, epsilon=1.0, save=False, kc=0.0, input_k=np.zeros(10), input_k_init=np.zeros(10), input_P=np.zeros(10), input_z=np.zeros(10), input_A=np.zeros(10), input_B=np.zeros(10)):
 
-        # Function to calculate the CTM power spectrum
+        """
+        Function to calculate the CTM power spectrum
+        """
 
         time = Timer()
         time.start()

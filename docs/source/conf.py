@@ -7,8 +7,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'The General Cosmological Trajectories Method (GCTM) module'
-copyright = '2020, Fran Lane'
+project = 'The Cosmological Trajectories Method (GCTM) module'
+copyright = '2021, Fran Lane'
 author = 'Fran Lane'
 
 # The short X.Y version
