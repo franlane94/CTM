@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using the CTM in real space &mdash; The Cosmological Trajectories Method (GCTM) module 1 documentation</title>
+  <title>The CTM in real space &mdash; The Cosmological Trajectories Method (CTM) module 1 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="The Cosmological Trajectories Method (GCTM) module 1 documentation" href="index.html"/>
+    <link rel="top" title="The Cosmological Trajectories Method (CTM) module 1 documentation" href="index.html"/>
         <link rel="prev" title="Basic cosmology operations" href="basic_cosmology.html"/> 
 
   
@@ -55,7 +55,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> The Cosmological Trajectories Method (GCTM) module
+            <a href="index.html" class="icon icon-home"> The Cosmological Trajectories Method (CTM) module
           
 
           
@@ -91,10 +91,16 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="basic_cosmology.html">Basic cosmology operations</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the CTM in real space</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#example-i-calculating-the-linear-power-spectrum">Example I - Calculating the linear power spectrum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-ii-calculating-the-zel-dovich-power-spectrum">Example II - Calculating the Zel’dovich power spectrum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-iii-calculating-the-gctm-power-spectrum">Example III - Calculating the GCTM power spectrum</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The CTM in real space</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-brief-introduction-to-the-ctm-and-the-beyond-zel-dovich-approximation">A brief introduction to the CTM and the Beyond Zel’dovich approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-ctm-module-in-real-space">Using the CTM module in real space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-i-calculating-the-linear-power-spectrum">Example I - Calculating the linear power spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-ii-calculating-the-zel-dovich-power-spectrum">Example II - Calculating the Zel’dovich power spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-iii-calculating-the-ctm-power-spectrum">Example III - Calculating the CTM power spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-iv-computing-two-point-correlation-functions">Example IV - Computing two-point correlation functions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -111,7 +117,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">The Cosmological Trajectories Method (GCTM) module</a>
+          <a href="index.html">The Cosmological Trajectories Method (CTM) module</a>
         
       </nav>
 
@@ -141,7 +147,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Using the CTM in real space</li>
+      <li>The CTM in real space</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -160,9 +166,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="using-the-ctm-in-real-space">
-<h1>Using the CTM in real space<a class="headerlink" href="#using-the-ctm-in-real-space" title="Permalink to this headline">¶</a></h1>
-<p>Documentation introducing the CTM class</p>
+  <div class="section" id="the-ctm-in-real-space">
+<h1>The CTM in real space<a class="headerlink" href="#the-ctm-in-real-space" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="a-brief-introduction-to-the-ctm-and-the-beyond-zel-dovich-approximation">
+<h2>A brief introduction to the CTM and the Beyond Zel’dovich approximation<a class="headerlink" href="#a-brief-introduction-to-the-ctm-and-the-beyond-zel-dovich-approximation" title="Permalink to this headline">¶</a></h2>
+<p>The CTM trajectory to second-order is given by</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}\left(\mathbf{q},t\right)=\mathbf{q}+\Psi^{\left(0\right)}_i\left(\mathbf{q},t_i\right)\left[A\left(t\right)\delta_{ij}+B_\epsilon\left(t\right)\bar{E}_{ij}\left(\mathbf{q},t_i\right)\right]\]</div>
+<p>where the tidal tensor is <span class="math notranslate nohighlight">\(\bar{E}_{ij}\left(\mathbf{q},t\right)=\nabla_i\nabla_j\nabla^{-2}\delta^{\left(0\right)}\left(\mathbf{q},t\right)\)</span> with <span class="math notranslate nohighlight">\(\delta^{\left(0\right)}\)</span> being the linear overdensity field. This tidal term describes the effects of gravitational scattering and deflection. The time-dependent function <span class="math notranslate nohighlight">\(B_\epsilon\left(t\right)\)</span> is,</p>
+<div class="math notranslate nohighlight">
+\[B_\epsilon\left(t\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{t'}^{t}\frac{dt''}{a''^2}\int_{t_i}^{t}\frac{dt'}{a'}A\left(t'\right)^2,\]</div>
+<p>which after using <span class="math notranslate nohighlight">\(dt=-\frac{a}{H}dz\)</span> can be written as,</p>
+<div class="math notranslate nohighlight">
+\[B_\epsilon\left(t\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^{z}\frac{dz'}{H\left(z'\right)}A\left(z'\right)^2.\]</div>
+<p>The Beyond Zel’dovich approximation is the second-order CTM trajectory given in with the following time-dependent functions</p>
+<div class="math notranslate nohighlight">
+\[A\left(z\right)=\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\ \mathrm{and\ }
+B_\epsilon\left(z\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^{z}\frac{dz'}{H\left(z'\right)}\left(\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\right)^2.\]</div>
+</div>
+<div class="section" id="using-the-ctm-module-in-real-space">
+<h2>Using the CTM module in real space<a class="headerlink" href="#using-the-ctm-module-in-real-space" title="Permalink to this headline">¶</a></h2>
+<p>Documentation introducing the CTM class.</p>
 <dl class="class">
 <dt id="CTM">
 <em class="property">class </em><code class="descname">CTM</code><span class="sig-paren">(</span><em>min_k=1e-5</em>, <em>max_k=100.0</em>, <em>nk=3000</em>, <em>h=0.6737</em>, <em>omega0_b=0.02233</em>, <em>omega0_cdm=0.11933</em>, <em>n_s=0.9665</em>, <em>sigma_8=0.8102</em>, <em>verbose=False</em>, <em>gauge='sync'</em>, <em>output='mPk'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#CTM" title="Permalink to this definition">¶</a></dt>
@@ -200,8 +225,13 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li>z_val (<em>float</em>) : the redshift at which the linear growth factor is calculated (<strong>default: z_val=0.0</strong>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>linear_growth_val (<em>float</em>) : the linear growth factor value <span class="math notranslate nohighlight">\(D_1\)</span> at the given redshift</li>
 </ul>
 </td>
 </tr>
@@ -212,14 +242,19 @@
 <code class="descname">linear_power</code><span class="sig-paren">(</span><em>input_k</em>, <em>z_val=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#linear_power" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<p>Function to calculate the linear power spectrum at a given redshift using Classylss</p>
+<p>Function to calculate the linear power spectrum at a given redshift using <code class="docutils literal notranslate"><span class="pre">Classylss</span></code></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li>input_k (<em>array</em>) : log-spaced array of <span class="math notranslate nohighlight">\(k\)</span> values to compute the linear power spectrum at</li>
 <li>z_val (<em>float</em>) : the redshift at which the linear power spectrum is calculated (<strong>default: z_val=0.0</strong>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>linear_power_spec (<em>array</em>) : array of <span class="math notranslate nohighlight">\(P\left(k\right)\)</span> values</li>
 </ul>
 </td>
 </tr>
@@ -235,13 +270,19 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li>z_val (<em>float</em>) : the redshift at which the Zel’dovich power spectrum is calculated (<strong>default: z_val=0.0</strong>)</li>
 <li>kc (<em>float</em>, optional) : the cutoff value to be used if an initial Gaussian damped power spectrum is used (<strong>default: kc=0.0</strong>)</li>
 <li>n_val (<em>int</em>, optional) : the number of spherical Bessel functions summed over (<strong>default: n_val=32</strong>)</li>
 <li>input_k (<em>array</em>, optional) : log-spaced array of <span class="math notranslate nohighlight">\(k\)</span> values to compute the linear power spectrum at</li>
 <li>input_P (<em>array</em>, optional) : array of linear power spectrum values at <span class="math notranslate nohighlight">\(z=0\)</span></li>
 <li>save (<em>bool</em>, optional) : whether to save the calculated power spectrum to the current directory</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>zel_power (<em>array</em>) : array of <span class="math notranslate nohighlight">\(P\left(k\right)\)</span> values</li>
+<li>k_values (<em>array</em>) : an array of log-spaced <cite>k</cite> values if input_k is not given</li>
 </ul>
 </td>
 </tr>
@@ -261,7 +302,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li>z_val (<em>float</em>) : the redshift at which the CTM power spectrum is calculated (<strong>default: z_val=0.0</strong>)</li>
 <li>zinit (<em>float</em>) : the initial redshift <span class="math notranslate nohighlight">\(z_i\)</span> that the time dependent functions are integrated from (<strong>default: zinit=100.0</strong>)</li>
 <li>epsilon (<em>float</em>) : the value of the expansion parameter <span class="math notranslate nohighlight">\(\epsilon_\mathrm{BZ}\)</span> (<strong>default: epsilon=1.0</strong>)</li>
@@ -277,6 +318,12 @@
 </ul>
 </td>
 </tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>zel_power (<em>array</em>) : array of <span class="math notranslate nohighlight">\(P\left(k\right)\)</span> values</li>
+<li>k_values (<em>array</em>) : an array of log-spaced <cite>k</cite> values if input_k is not given</li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>
 <div class="admonition important">
@@ -287,8 +334,118 @@
 <p class="first admonition-title">Important</p>
 <p class="last">If input_P is given you must also give input_k_init and if input_P is not evaluated at <span class="math notranslate nohighlight">\(z_i=100\)</span> and you have not passed your own input_A array you must also specify the initial redshift at which input_P is calculated as z_init.</p>
 </div>
+<dl class="function">
+<dt id="corr_func">
+<code class="descname">corr_func</code><span class="sig-paren">(</span><em>k_values</em>, <em>P_values</em>, <em>min_r=1.0</em>, <em>max_r=1000.0</em>, <em>nr=10000</em><span class="sig-paren">)</span><a class="headerlink" href="#corr_func" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate the two-point correlation function given k values and a power spectrum</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li>k_values (<em>array</em>) : log-spaced array of <span class="math notranslate nohighlight">\(k\)</span> values to compute the two-point correlation function at</li>
+<li>P_values (<em>array</em>) : array of <span class="math notranslate nohighlight">\(P\left(k\right)\)</span> values to compute the two-point correlation function with</li>
+<li>min_r (<em>float</em>) : the minimum <span class="math notranslate nohighlight">\(r\)</span> value returned (<strong>default: min_r=1.0</strong>)</li>
+<li>max_r (<em>float</em>) : the maximum <span class="math notranslate nohighlight">\(r\)</span> value returned (<strong>default: min_r=1000.0</strong>)</li>
+<li>nr (<em>int</em>) : the number of <span class="math notranslate nohighlight">\(r\)</span> values returned (<strong>default: nr=10000</strong>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>r_values (<em>array</em>) : array of <span class="math notranslate nohighlight">\(r\)</span> values</li>
+<li>corr_values (<em>array</em>) : array of <span class="math notranslate nohighlight">\(\xi\left(r\right)\)</span> values</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="corr_func_zel">
+<code class="descname">corr_func_zel</code><span class="sig-paren">(</span><em>min_r=1.0</em>, <em>max_r=1000.0</em>, <em>nr=10000</em>, <em>n_val=32</em>, <em>z_val=0.0</em>, <em>kc=0.0</em>, <em>input_k=np.zeros(10)</em>, <em>input_P=np.zeros(10)</em>, <em>save=False</em><span class="sig-paren">)</span><a class="headerlink" href="#corr_func_zel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate the two-point correlation function for the Zel’dovich approximation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li>min_r (<em>float</em>) : the minimum <span class="math notranslate nohighlight">\(r\)</span> value returned (<strong>default: min_r=1.0</strong>)</li>
+<li>max_r (<em>float</em>) : the maximum <span class="math notranslate nohighlight">\(r\)</span> value returned (<strong>default: min_r=1000.0</strong>)</li>
+<li>nr (<em>int</em>) : the number of <span class="math notranslate nohighlight">\(r\)</span> values returned (<strong>default: nr=10000</strong>)</li>
+<li>z_val (<em>float</em>) : the redshift at which the Zel’dovich correlation function is calculated (<strong>default: z_val=0.0</strong>)</li>
+<li>kc (<em>float</em>, optional) : the cutoff value to be used if an initial Gaussian damped power spectrum is used (<strong>default: kc=0.0</strong>)</li>
+<li>n_val (<em>int</em>, optional) : the number of spherical Bessel functions summed over (<strong>default: n_val=32</strong>)</li>
+<li>input_k (<em>array</em>, optional) : log-spaced array of <span class="math notranslate nohighlight">\(k\)</span> values to compute the linear power spectrum at</li>
+<li>input_P (<em>array</em>, optional) : array of linear power spectrum values at <span class="math notranslate nohighlight">\(z=0\)</span></li>
+<li>save (<em>bool</em>, optional) : whether to save the calculated power spectrum to the current directory</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>r_values (<em>array</em>) : array of <span class="math notranslate nohighlight">\(r\)</span> values</li>
+<li>corr_values (<em>array</em>) : array of <span class="math notranslate nohighlight">\(\xi\left(r\right)\)</span> values</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">If input power spectrum values are given the log-spaced <span class="math notranslate nohighlight">\(k\)</span> values used to compute it must also be given.</p>
+</div>
+<dl class="function">
+<dt id="corr_func_ctm">
+<code class="descname">corr_func_ctm</code><span class="sig-paren">(</span><em>self</em>, <em>min_r=1.0</em>, <em>max_r=1000.0</em>, <em>nr=10000</em>, <em>n_val=32</em>, <em>zinit=100.0</em>, <em>z_val=0.0</em>, <em>epsilon=1.0</em>, <em>save=False</em>, <em>kc=0.0</em>, <em>input_k=np.zeros(10)</em>, <em>input_P=np.zeros(10)</em>, <em>input_k_init=np.zeros(10)</em>, <em>input_z=np.zeros(10)</em>, <em>input_A=np.zeros(10)</em>, <em>input_B=np.zeros(10)</em><span class="sig-paren">)</span><a class="headerlink" href="#corr_func_ctm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Function to calculate the two-point correlation function for the CTM</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li>min_r (<em>float</em>) : the minimum <span class="math notranslate nohighlight">\(r\)</span> value returned (<strong>default: min_r=1.0</strong>)</li>
+<li>max_r (<em>float</em>) : the maximum <span class="math notranslate nohighlight">\(r\)</span> value returned (<strong>default: min_r=1000.0</strong>)</li>
+<li>nr (<em>int</em>) : the number of <span class="math notranslate nohighlight">\(r\)</span> values returned (<strong>default: nr=10000</strong>)</li>
+<li>z_val (<em>float</em>) : the redshift at which the CTM correlation function is calculated (<strong>default: z_val=0.0</strong>)</li>
+<li>zinit (<em>float</em>) : the initial redshift <span class="math notranslate nohighlight">\(z_i\)</span> that the time dependent functions are integrated from (<strong>default: zinit=100.0</strong>)</li>
+<li>epsilon (<em>float</em>) : the value of the expansion parameter <span class="math notranslate nohighlight">\(\epsilon_\mathrm{BZ}\)</span> (<strong>default: epsilon=1.0</strong>)</li>
+<li>n_val (<em>int</em>, optional) : the number of spherical Bessel functions summed over (<strong>default: n_val=32</strong>)</li>
+<li>kc (<em>float</em>, optional) : the cutoff value to be used if an initial Gaussian damped power spectrum is used (<strong>default: kc=0.0</strong>)</li>
+<li>input_k (<em>array</em>, optional) : log-spaced array of <span class="math notranslate nohighlight">\(k\)</span> values to compute the linear power spectrum at</li>
+<li>input_k_init (<em>array</em>, optional) : log-space array of <span class="math notranslate nohighlight">\(k\)</span> values are which the input_P is calculated at</li>
+<li>input_P (<em>array</em>, optional) : array of linear power spectrum values at <span class="math notranslate nohighlight">\(z=z_i\)</span></li>
+<li>input_A (<em>array</em>, optional) : array of <span class="math notranslate nohighlight">\(A\left(z\right)\)</span> values</li>
+<li>input_z (<em>array</em>, optional) : array of redshift values corresponding to <span class="math notranslate nohighlight">\(A\)</span> values</li>
+<li>input_B (<em>array</em>, optional) : array of <span class="math notranslate nohighlight">\(B\left(z\right)\)</span> values corresponding to <span class="math notranslate nohighlight">\(A\)</span> values and redshift values</li>
+<li>save (<em>bool</em>, optional) : whether to save the calculated power spectrum to the current directory</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>r_values (<em>array</em>) : array of <span class="math notranslate nohighlight">\(r\)</span> values</li>
+<li>corr_values (<em>array</em>) : array of <span class="math notranslate nohighlight">\(\xi\left(r\right)\)</span> values</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">If input_A or input_B or both are given then the redshift values used to compute them must also be given. For convergence use at least 1000 redshift values.</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">If input_P is given you must also give input_k_init and if input_P is not evaluated at <span class="math notranslate nohighlight">\(z_i=100\)</span> and you have not passed your own input_A array you must also specify the initial redshift at which input_P is calculated as z_init.</p>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="example-i-calculating-the-linear-power-spectrum">
-<h2>Example I - Calculating the linear power spectrum<a class="headerlink" href="#example-i-calculating-the-linear-power-spectrum" title="Permalink to this headline">¶</a></h2>
+<h3>Example I - Calculating the linear power spectrum<a class="headerlink" href="#example-i-calculating-the-linear-power-spectrum" title="Permalink to this headline">¶</a></h3>
 <div class="docutils container">
 </div>
 <div class="docutils container">
@@ -322,7 +479,7 @@
 </div>
 </div>
 <div class="section" id="example-ii-calculating-the-zel-dovich-power-spectrum">
-<h2>Example II - Calculating the Zel’dovich power spectrum<a class="headerlink" href="#example-ii-calculating-the-zel-dovich-power-spectrum" title="Permalink to this headline">¶</a></h2>
+<h3>Example II - Calculating the Zel’dovich power spectrum<a class="headerlink" href="#example-ii-calculating-the-zel-dovich-power-spectrum" title="Permalink to this headline">¶</a></h3>
 <div class="docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Zel&#39;dovich power spectrum at z=0</span>
 
@@ -372,16 +529,16 @@
 <img alt="_images/ctm_5_0.png" src="_images/ctm_5_0.png" />
 </div>
 </div>
-<div class="section" id="example-iii-calculating-the-gctm-power-spectrum">
-<h2>Example III - Calculating the GCTM power spectrum<a class="headerlink" href="#example-iii-calculating-the-gctm-power-spectrum" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-iii-calculating-the-ctm-power-spectrum">
+<h3>Example III - Calculating the CTM power spectrum<a class="headerlink" href="#example-iii-calculating-the-ctm-power-spectrum" title="Permalink to this headline">¶</a></h3>
 <p>We can also calculate the Beyond Zel’dovich power spectrum if no <span class="math notranslate nohighlight">\(A\left(z\right)\)</span> and <span class="math notranslate nohighlight">\(B\left(z\right)\)</span> functions are specified. These functions are</p>
 <div class="math notranslate nohighlight">
 \[A\left(z\right)=\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\ \mathrm{and\ } B\left(z\right)=-\epsilon\frac{3}{2}H_0^2\Omega_m\int_z'^z\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^z\frac{dz'}{H\left(z'\right)}\left(\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\right)^2.\]</div>
-<p>See Lane et al. (2020) for more details.</p>
+<p>See Lane et al. (2021) for more details.</p>
 <div class="docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Beyond Zel&#39;dovich power spectrum at z=0 with kc=5 h/Mpc</span>
 
-<span class="n">P_gctm_0_5</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">ctm_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="n">P_ctm_0_5</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">ctm_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -390,7 +547,7 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_lin_0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{Linear}</span><span class="s2">$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_zel_0_5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Damped\ Zel}^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_gctm_0_5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Damped\ Beyond\ Zel}^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_ctm_0_5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Damped\ Beyond\ Zel}^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$k\ [\mathrm</span><span class="si">{h}</span><span class="s2">\ \mathrm</span><span class="si">{Mpc}</span><span class="s2">^{-1}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{P}</span><span class="s2">\left(k\right)\ [\mathrm</span><span class="si">{Mpc}</span><span class="s2">^3\ \mathrm</span><span class="si">{h}</span><span class="s2">^{-3}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
@@ -419,7 +576,7 @@
 
 <span class="c1"># Calculate the Beyond Zel&#39;dovich power spectrum at z=0 with kc=5 h/Mpc with input A</span>
 
-<span class="n">P_gctm_input_A</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">ctm_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">input_z</span><span class="o">=</span><span class="n">z_vals</span><span class="p">,</span> <span class="n">input_A</span><span class="o">=</span><span class="n">A_vals</span><span class="p">)</span>
+<span class="n">P_ctm_input_A</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">ctm_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">input_z</span><span class="o">=</span><span class="n">z_vals</span><span class="p">,</span> <span class="n">input_A</span><span class="o">=</span><span class="n">A_vals</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -427,7 +584,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the results</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_lin_0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{Linear}</span><span class="s2">$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_gctm_input_A</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Damped\ Beyond\ Zel}^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_ctm_input_A</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Damped\ Beyond\ Zel}^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$k\ [\mathrm</span><span class="si">{h}</span><span class="s2">\ \mathrm</span><span class="si">{Mpc}</span><span class="s2">^{-1}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{P}</span><span class="s2">\left(k\right)\ [\mathrm</span><span class="si">{Mpc}</span><span class="s2">^3\ \mathrm</span><span class="si">{h}</span><span class="s2">^{-3}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
@@ -437,6 +594,37 @@
 </pre></div>
 </div>
 <img alt="_images/ctm_9_0.png" src="_images/ctm_9_0.png" />
+</div>
+</div>
+<div class="section" id="example-iv-computing-two-point-correlation-functions">
+<h3>Example IV - Computing two-point correlation functions<a class="headerlink" href="#example-iv-computing-two-point-correlation-functions" title="Permalink to this headline">¶</a></h3>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the linear correlation function</span>
+<span class="n">r_lin</span><span class="p">,</span> <span class="n">corr_lin</span><span class="o">=</span><span class="n">CTM</span><span class="p">()</span><span class="o">.</span><span class="n">corr_func</span><span class="p">(</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">P_lin_0</span><span class="p">)</span>
+
+<span class="c1"># Compute the Zel&#39;dovich and CTM correlation functions</span>
+
+<span class="n">r_zel</span><span class="p">,</span> <span class="n">corr_zel</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">corr_func_zel</span><span class="p">()</span>
+<span class="n">r_ctm</span><span class="p">,</span> <span class="n">corr_ctm</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">corr_func_ctm</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the results</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_lin</span><span class="p">,</span> <span class="n">r_lin</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">corr_lin</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{Linear}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_zel</span><span class="p">,</span> <span class="n">r_zel</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">corr_zel</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm</span><span class="si">{Zel}</span><span class="s2">^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_ctm</span><span class="p">,</span> <span class="n">r_ctm</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">corr_ctm</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\mathrm{Beyond\ Zel}^\prime\mathrm</span><span class="si">{dovich}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$r\ [\mathrm</span><span class="si">{Mpc}</span><span class="s2">\ \mathrm</span><span class="si">{h}</span><span class="s2">^{-1}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\xi\left(r\right)\ [\mathrm</span><span class="si">{Mpc}</span><span class="s2">^2\ \mathrm</span><span class="si">{h}</span><span class="s2">^{-2}]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">130</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/ctm_11_0.png" src="_images/ctm_11_0.png" />
+</div>
 </div>
 </div>
 </div>

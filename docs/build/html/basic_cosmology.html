@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic cosmology operations &mdash; The Cosmological Trajectories Method (GCTM) module 1 documentation</title>
+  <title>Basic cosmology operations &mdash; The Cosmological Trajectories Method (CTM) module 1 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="The Cosmological Trajectories Method (GCTM) module 1 documentation" href="index.html"/>
-        <link rel="next" title="Using the CTM in real space" href="ctm.html"/>
+    <link rel="top" title="The Cosmological Trajectories Method (CTM) module 1 documentation" href="index.html"/>
+        <link rel="next" title="The CTM in real space" href="ctm.html"/>
         <link rel="prev" title="Welcome to the CTM module’s documentation!" href="index.html"/> 
 
   
@@ -56,7 +56,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> The Cosmological Trajectories Method (GCTM) module
+            <a href="index.html" class="icon icon-home"> The Cosmological Trajectories Method (CTM) module
           
 
           
@@ -95,7 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ctm.html">Using the CTM in real space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctm.html">The CTM in real space</a></li>
 </ul>
 
             
@@ -110,7 +110,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">The Cosmological Trajectories Method (GCTM) module</a>
+          <a href="index.html">The Cosmological Trajectories Method (CTM) module</a>
         
       </nav>
 
@@ -178,8 +178,8 @@
 <li>omega0_cdm (<em>float</em>) : the current cold dark matter density, <span class="math notranslate nohighlight">\(\Omega_{cdm,0}h^2\)</span></li>
 <li>k_max (<em>float</em>) : the maximum <span class="math notranslate nohighlight">\(k\)</span> value used when calculating the linear power spectrum</li>
 <li>n_s (<em>float</em>) : the tilt of the primordial power spectrum</li>
-<li>sigma_8 (<em>float</em>) : the amplitude of matter fluctations within a sphere of radius <span class="math notranslate nohighlight">\(r=8\ \mathrm{Mpc}\ \mathrm{h}^{-1}\)</span> at <span class="math notranslate nohighlight">\(z=0\)</span></li>
-<li>verbose (<em>bool</em>) : whether to turn on the default CLASS logging</li>
+<li>sigma_8 (<em>float</em>) : the amplitude of matter fluctuations within a sphere of radius <span class="math notranslate nohighlight">\(r=8\ \mathrm{Mpc}\ \mathrm{h}^{-1}\)</span> at <span class="math notranslate nohighlight">\(z=0\)</span></li>
+<li>verbose (<em>bool</em>) : whether to turn on the default <code class="docutils literal notranslate"><span class="pre">class</span></code> logging</li>
 <li>gauge (<em>string</em>) : whether to use the synchronous or newtonian gauge</li>
 <li>output (<em>string</em>) : whether to output the matter power spectrum or CMB power spectrum</li>
 </ul>
@@ -197,8 +197,13 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li>z_val (<em>float</em>) : the redshift at which the scale factor is computed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>a_val (<em>float</em>) : the scale factor value at z_val</li>
 </ul>
 </td>
 </tr>
@@ -214,8 +219,13 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li>z_val (<em>float</em>) : the redshift at which the Hubble parameter is computed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>hubble_val (<em>float</em>) : the Hubble parameter at z_val</li>
 </ul>
 </td>
 </tr>
@@ -227,12 +237,34 @@
 <dd></dd></dl>
 
 <p>Function to calculate <span class="math notranslate nohighlight">\(\Omega_m=\Omega_{cdm}+\Omega_b\)</span></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>omega_m (<em>float</em>) : the <span class="math notranslate nohighlight">\(\Omega_m\)</span> value</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="function">
 <dt id="H0">
 <code class="descname">H0</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#H0" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Function to calculate <span class="math notranslate nohighlight">\(H_0=h\times100\)</span></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>H0 (<em>float</em>) : the <span class="math notranslate nohighlight">\(H_0\)</span> value</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="function">
 <dt id="calc_linear_growth">
 <code class="descname">calc_linear_growth</code><span class="sig-paren">(</span><em>z_val</em><span class="sig-paren">)</span><a class="headerlink" href="#calc_linear_growth" title="Permalink to this definition">¶</a></dt>
@@ -243,8 +275,13 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li>z_val (<em>float</em>) : the redshift at which the linear growth factor is computed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>linear_growth_val (<em>float</em>) : the <span class="math notranslate nohighlight">\(D_1\)</span> value at z_val</li>
 </ul>
 </td>
 </tr>
@@ -260,8 +297,13 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li>z_val (<em>float</em>) : the redshift at which the linear growth factor is computed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>independent_growth_val (<em>float</em>) : the <span class="math notranslate nohighlight">\(f\)</span> value at z_val</li>
 </ul>
 </td>
 </tr>
@@ -269,16 +311,22 @@
 </table>
 <dl class="function">
 <dt id="calc_linear_power">
-<code class="descname">calc_linear_power</code><span class="sig-paren">(</span><em>z_val</em><span class="sig-paren">)</span><a class="headerlink" href="#calc_linear_power" title="Permalink to this definition">¶</a></dt>
+<code class="descname">calc_linear_power</code><span class="sig-paren">(</span><em>k</em>, <em>z_val</em><span class="sig-paren">)</span><a class="headerlink" href="#calc_linear_power" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<p>Function to calculate the linear power spectrum at a given redshift using Class</p>
+<p>Function to calculate the linear power spectrum at a given redshift using <code class="docutils literal notranslate"><span class="pre">classylss</span></code></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li>z_val (<em>float</em>) : the redshift at which the linear growth factor is computed</li>
+<li>k (<em>array</em>, <em>float</em>) : log-spaced array of <span class="math notranslate nohighlight">\(k\)</span> values</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="first last simple">
+<li>linear_power (<em>array</em>) : the linear power spectrum evaluated at the given <span class="math notranslate nohighlight">\(k\)</span> values and redshift value</li>
 </ul>
 </td>
 </tr>
@@ -345,7 +393,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ctm.html" class="btn btn-neutral float-right" title="Using the CTM in real space" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ctm.html" class="btn btn-neutral float-right" title="The CTM in real space" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Welcome to the CTM module’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -4,14 +4,14 @@
    contain the root `toctree` directive.
 
 Welcome to the CTM module's documentation!
-================================
+==========================================
 
-The Cosmological Trajectories Method (GCTM) is a perturbative technique to compute the power spectrum and two-point correlation function in real space in the mildly to non-linear regime for a range of cosmologies.
+The Cosmological Trajectories Method (CTM) is a perturbative technique to compute the power spectrum and two-point correlation function in real space in the mildly to non-linear regime for a range of cosmologies.
 
 Source and installation
 -----------------------
 
-The code is available at `Github <https://github.com/franlane94/CTM>`__ but can also be installed using pip (all of the dependencies will be automatically installed)
+The code is available at `Github <https://github.com/franlane94/CTM>`__ but can also be installed using ``pip`` (all of the dependencies will be automatically installed)
 
 .. code-block:: bash
 
@@ -43,15 +43,7 @@ To check the module has been installed correctly run
 Getting started
 ---------------
 
-For a quickstart see the `Jupyter notebook <https://github.com/franlane94/CTM/tree/master/Examples>`__. For more detailed examples and information about the code please see the documentation pages.
-
-.. note::
-
-  The units of commonly used variables in this code are:
-
-    * :math:`H_0\ [\mathrm{km}\ \mathrm{s}^{-1}\ \mathrm{Mpc}^{-1}]`
-    * :math:`k\ [\mathrm{h}\ \mathrm{Mpc}^{-1}]`
-    * :math:`\mathrm{P}\left(k\right)\ [\mathrm{Mpc}^3\ \mathrm{h}^{-3}]`
+For a quick start please see the `Jupyter notebook <https://github.com/franlane94/CTM/tree/master/Examples>`__. For more detailed examples and information about the code please see the documentation pages.
 
 The default cosmology is `Planck18 <https://arxiv.org/abs/1807.06209>`__ and the values of key parameters shown in the Table below.
 
@@ -69,6 +61,14 @@ The default cosmology is `Planck18 <https://arxiv.org/abs/1807.06209>`__ and the
 | :math:`\sigma_8`        | 0.8102 |
 +-------------------------+--------+
 
+.. note::
+
+  The units of commonly used variables in this code are:
+
+    * :math:`H_0\ [\mathrm{km}\ \mathrm{s}^{-1}\ \mathrm{Mpc}^{-1}]`
+    * :math:`k\ [\mathrm{h}\ \mathrm{Mpc}^{-1}]`
+    * :math:`\mathrm{P}\left(k\right)\ [\mathrm{Mpc}^3\ \mathrm{h}^{-3}]`
+    * :math:`r\ [\mathrm{Mpc}\ \mathrm{h}^{-1}]`
 
 Citation
 --------
@@ -80,8 +80,10 @@ Acknowledgements
 
 Please also cite the following papers whose work has featured in the development of both the CTM and this Python module:
 
-*: `Github <https://github.com/franlane94/CTM>`__
-
+- `Bartelmann et al. 2014 <https://ui.adsabs.harvard.edu/abs/2014arXiv1411.1153B/abstract>`__ : Kinetic Field Theory (KFT)
+- `Ali-Haimoud 2015 <https://ui.adsabs.harvard.edu/abs/2015PhRvD..91j3507A/abstract>`__ : The trajectories re-derivation of KFT
+- `Hamilton 2000 <https://ui.adsabs.harvard.edu/abs/2000MNRAS.312..257H/abstract>`__ : FFTLog algorithm on which ``mcfit`` is based
+- `Lesgourgues 2011 <https://ui.adsabs.harvard.edu/abs/2011arXiv1104.2932L/abstract>`__ : Class, the Boltzmann code on which ``classylss`` is based
 
 Help and issues
 ---------------

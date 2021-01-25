@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to the CTM module’s documentation! &mdash; The Cosmological Trajectories Method (GCTM) module 1 documentation</title>
+  <title>Welcome to the CTM module’s documentation! &mdash; The Cosmological Trajectories Method (CTM) module 1 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="The Cosmological Trajectories Method (GCTM) module 1 documentation" href="#"/>
+    <link rel="top" title="The Cosmological Trajectories Method (CTM) module 1 documentation" href="#"/>
         <link rel="next" title="Basic cosmology operations" href="basic_cosmology.html"/> 
 
   
@@ -55,7 +55,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> The Cosmological Trajectories Method (GCTM) module
+            <a href="#" class="icon icon-home"> The Cosmological Trajectories Method (CTM) module
           
 
           
@@ -91,7 +91,7 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="basic_cosmology.html">Basic cosmology operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ctm.html">Using the CTM in real space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctm.html">The CTM in real space</a></li>
 </ul>
 
             
@@ -106,7 +106,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">The Cosmological Trajectories Method (GCTM) module</a>
+          <a href="#">The Cosmological Trajectories Method (CTM) module</a>
         
       </nav>
 
@@ -157,10 +157,10 @@
             
   <div class="section" id="welcome-to-the-ctm-module-s-documentation">
 <h1>Welcome to the CTM module’s documentation!<a class="headerlink" href="#welcome-to-the-ctm-module-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>The Cosmological Trajectories Method (GCTM) is a perturbative technique to compute the power spectrum and two-point correlation function in real space in the mildly to non-linear regime for a range of cosmologies.</p>
+<p>The Cosmological Trajectories Method (CTM) is a perturbative technique to compute the power spectrum and two-point correlation function in real space in the mildly to non-linear regime for a range of cosmologies.</p>
 <div class="section" id="source-and-installation">
 <h2>Source and installation<a class="headerlink" href="#source-and-installation" title="Permalink to this headline">¶</a></h2>
-<p>The code is available at <a class="reference external" href="https://github.com/franlane94/CTM">Github</a> but can also be installed using pip (all of the dependencies will be automatically installed)</p>
+<p>The code is available at <a class="reference external" href="https://github.com/franlane94/CTM">Github</a> but can also be installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code> (all of the dependencies will be automatically installed)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install ctm
 </pre></div>
 </div>
@@ -182,18 +182,7 @@ from ctm import CTM
 </div>
 <div class="section" id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>For a quickstart see the <a class="reference external" href="https://github.com/franlane94/CTM/tree/master/Examples">Jupyter notebook</a>. For more detailed examples and information about the code please see the documentation pages.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>The units of commonly used variables in this code are:</p>
-<blockquote class="last">
-<div><ul class="simple">
-<li><span class="math notranslate nohighlight">\(H_0\ [\mathrm{km}\ \mathrm{s}^{-1}\ \mathrm{Mpc}^{-1}]\)</span></li>
-<li><span class="math notranslate nohighlight">\(k\ [\mathrm{h}\ \mathrm{Mpc}^{-1}]\)</span></li>
-<li><span class="math notranslate nohighlight">\(\mathrm{P}\left(k\right)\ [\mathrm{Mpc}^3\ \mathrm{h}^{-3}]\)</span></li>
-</ul>
-</div></blockquote>
-</div>
+<p>For a quick start please see the <a class="reference external" href="https://github.com/franlane94/CTM/tree/master/Examples">Jupyter notebook</a>. For more detailed examples and information about the code please see the documentation pages.</p>
 <p>The default cosmology is <a class="reference external" href="https://arxiv.org/abs/1807.06209">Planck18</a> and the values of key parameters shown in the Table below.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -223,6 +212,18 @@ from ctm import CTM
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The units of commonly used variables in this code are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><span class="math notranslate nohighlight">\(H_0\ [\mathrm{km}\ \mathrm{s}^{-1}\ \mathrm{Mpc}^{-1}]\)</span></li>
+<li><span class="math notranslate nohighlight">\(k\ [\mathrm{h}\ \mathrm{Mpc}^{-1}]\)</span></li>
+<li><span class="math notranslate nohighlight">\(\mathrm{P}\left(k\right)\ [\mathrm{Mpc}^3\ \mathrm{h}^{-3}]\)</span></li>
+<li><span class="math notranslate nohighlight">\(r\ [\mathrm{Mpc}\ \mathrm{h}^{-1}]\)</span></li>
+</ul>
+</div></blockquote>
+</div>
 </div>
 <div class="section" id="citation">
 <h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h2>
@@ -230,6 +231,13 @@ from ctm import CTM
 </div>
 <div class="section" id="acknowledgements">
 <h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+<p>Please also cite the following papers whose work has featured in the development of both the CTM and this Python module:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2014arXiv1411.1153B/abstract">Bartelmann et al. 2014</a> : Kinetic Field Theory (KFT)</li>
+<li><a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2015PhRvD..91j3507A/abstract">Ali-Haimoud 2015</a> : The trajectories re-derivation of KFT</li>
+<li><a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2000MNRAS.312..257H/abstract">Hamilton 2000</a> : FFTLog algorithm on which <code class="docutils literal notranslate"><span class="pre">mcfit</span></code> is based</li>
+<li><a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2011arXiv1104.2932L/abstract">Lesgourgues 2011</a> : Class, the Boltzmann code on which <code class="docutils literal notranslate"><span class="pre">classylss</span></code> is based</li>
+</ul>
 </div>
 <div class="section" id="help-and-issues">
 <h2>Help and issues<a class="headerlink" href="#help-and-issues" title="Permalink to this headline">¶</a></h2>
