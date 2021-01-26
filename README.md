@@ -1,6 +1,6 @@
 # Cosmological Trajectories Method (CTM) module
 
-A Python module to compute the power spectrum and 2-point correlation function in real and redshift space using second-order CTM.
+A Python module to compute the power spectrum and 2-point correlation function in real space using second-order CTM.
 
 Please see the [Documentation](https://github.com/franlane94/CTM/wiki) for more details
 
