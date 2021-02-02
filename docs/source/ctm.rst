@@ -16,20 +16,20 @@ where the tidal tensor is :math:`\bar{E}_{ij}\left(\mathbf{q},t\right)=\nabla_i\
 
 .. math::
 
-  B_\epsilon\left(t\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{t'}^{t}\frac{dt''}{a''^2}\int_{t_i}^{t}\frac{dt'}{a'}A\left(t'\right)^2,
+  B_\epsilon\left(t\right)=-\epsilon_\mathrm{BZ}\omega_0^2\int_{t_i}^{t}\frac{dt'}{a'^2}\int_{t_i}^{t'}\frac{dt''}{a''}A\left(t''\right)^2,
 
 which after using :math:`dt=-\frac{a}{H}dz` can be written as,
 
 .. math::
 
-  B_\epsilon\left(t\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^{z}\frac{dz'}{H\left(z'\right)}A\left(z'\right)^2.
+    B_\epsilon\left(t\right)=-\epsilon_\mathrm{BZ}\omega_0^2\int_{z_i}^{z}\frac{dz'}{a'H\left(z'\right)}\int_{z_i}^{z'}\frac{dz''}{H\left(z''\right)}A\left(z''\right)^2.
 
 The Beyond Zel'dovich approximation is the second-order CTM trajectory given in with the following time-dependent functions
 
 .. math::
 
   A\left(z\right)=\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\ \mathrm{and\ }
-  B_\epsilon\left(z\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^{z}\frac{dz'}{H\left(z'\right)}\left(\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\right)^2.
+    B_\epsilon\left(z\right)&=-\epsilon_\mathrm{BZ}\omega_0^2\int_{z_i}^{z}\frac{dz'}{a'H\left(z'\right)}\int_{z_i}^{z'}\frac{dz''}{H\left(z''\right)}\left(\frac{D_1\left(z''\right)}{D_1\left(z_i\right)}\right)^2.
 
 
 Using the CTM module in real space

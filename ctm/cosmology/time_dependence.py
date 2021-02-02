@@ -80,11 +80,11 @@ class TimeDep:
 
             def super_conformal(z_prime, z_val):
 
-                return quad(lambda p: np.power(scale_factor(p)*H(p),-1), z_prime, z_val)[0]
+                return quad(lambda p: np.power(H(p), -1)*(D_1(p)/D_1(self.zinit))**2, self.zinit, z_prime)[0]
 
             for i in range(len(z)):
 
-                zeta[i] = quad(lambda z_prime: super_conformal(z_prime, z[i])*np.power(H(z_prime),-1)*(D_1(z_prime)/D_1(self.zinit))**2, self.zinit, z[i], epsabs=1e-4)[0]
+                zeta[i] = quad(lambda z_prime: super_conformal(z_prime, z[i])*np.power(scale_factor(z_prime)*H(z_prime),-1), self.zinit, z[i], epsabs=1e-4)[0]
 
         else:
 
@@ -110,9 +110,9 @@ class TimeDep:
 
             def super_conformal(z_prime, z_val):
 
-                return quad(lambda p: np.power(scale_factor(p)*H(p),-1), z_prime, z_val)[0]
+                return quad(lambda p: np.power(H(p), -1)*(D_1(p)/D_1(self.zinit))**2, self.zinit, z_prime)[0]
 
-            zeta = quad(lambda z_prime: super_conformal(z_prime, z)*np.power(H(z_prime),-1)*(D_1(z_prime)/D_1(self.zinit))**2, self.zinit, z, epsabs=1e-4)[0]
+            zeta = quad(lambda z_prime: super_conformal(z_prime, z)*np.power(scale_factor(z_prime)*H(z_prime),-1), self.zinit, z, epsabs=1e-4)[0]
 
         return zeta
 
@@ -141,15 +141,15 @@ class TimeDep:
 
             # Calculate B
 
-            def super_conformal(z_prime, z):
+            def super_conformal(z_prime, z_val):
 
-                return quad(lambda p: np.power(scale_factor(p)*H(p),-1), z_prime, z)[0]
+                return quad(lambda p: np.power(H(p), -1)*A(p)**2, self.zinit, z_prime)[0]
 
             B = np.zeros_like(z)
 
             for i in range(int(len(z))):
 
-                B[i] = quad(lambda z_prime: super_conformal(z_prime, z[i])*np.power(H(z_prime),-1)*A(z_prime)**2, self.zinit, z[i], epsabs=1e-4)[0]
+                B[i] = quad(lambda z_prime: super_conformal(z_prime, z[i])*np.power(scale_factor(z_prime)*H(z_prime),-1), self.zinit, z[i], epsabs=1e-4)[0]
 
         else:
 
@@ -178,8 +178,8 @@ class TimeDep:
 
             def super_conformal(z_prime, z_val):
 
-                return quad(lambda p: np.power(scale_factor(p)*H(p),-1), z_prime, z_val)[0]
+                return quad(lambda p: np.power(H(p), -1)*A(p)**2, self.zinit, z_prime)[0]
 
-            B = quad(lambda z_prime: super_conformal(z_prime, z)*np.power(H(z_prime),-1)*A(z_prime)**2, self.zinit, z, epsabs=1e-4)[0]
+            B = quad(lambda z_prime: super_conformal(z_prime, z)*np.power(scale_factor(z_prime)*H(z_prime),-1), self.zinit, z, epsabs=1e-4)[0]
 
         return B
