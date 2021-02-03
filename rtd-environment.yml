@@ -12,3 +12,4 @@ dependencies:
       - nbsphinx
       - sphinx_hand_theme
       - jupyter-sphinx
+      - seaborn
