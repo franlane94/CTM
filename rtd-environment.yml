@@ -1,0 +1,12 @@
+name: ctm
+
+dependencies:
+    - python
+    - scipy
+    - matplotlib>=2.2.2
+    - numpy>=1.14.2
+    - pip:
+      - classylss
+      - mcfit
+      - nbsphinx
+      - sphinx_hand_theme
