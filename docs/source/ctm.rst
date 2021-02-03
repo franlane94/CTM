@@ -24,12 +24,7 @@ which after using :math:`dt=-\frac{a}{H}dz` can be written as,
 
     B_\epsilon\left(t\right)=-\epsilon_\mathrm{BZ}\omega_0^2\int_{z_i}^{z}\frac{dz'}{a'H\left(z'\right)}\int_{z_i}^{z'}\frac{dz''}{H\left(z''\right)}A\left(z''\right)^2.
 
-The Beyond Zel'dovich approximation is the second-order CTM trajectory given in with the following time-dependent functions
-
-.. math::
-
-  A\left(z\right)=\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\ \mathrm{and\ }
-    B_\epsilon\left(z\right)&=-\epsilon_\mathrm{BZ}\omega_0^2\int_{z_i}^{z}\frac{dz'}{a'H\left(z'\right)}\int_{z_i}^{z'}\frac{dz''}{H\left(z''\right)}\left(\frac{D_1\left(z''\right)}{D_1\left(z_i\right)}\right)^2.
+The Beyond Zel'dovich approximation is the second-order CTM trajectory with :math:A\left(z\right)=\frac{D_1\left(z\right)}{D_1\left(z_i\right)}.
 
 
 Using the CTM module in real space
@@ -241,7 +236,7 @@ Example II - Calculating the Zel'dovich power spectrum
 
     # Calculate the Zel'dovich power spectrum at z=0
 
-    P_zel_0=CTM(nk=1000).zeldovich_power(input_k=k_vals)
+    P_zel_0=CTM(nk=500).zeldovich_power(input_k=k_vals)
 
 .. jupyter-execute::
 
@@ -267,7 +262,7 @@ We can also calculate the Zel'dovich power spectrum using a Gaussian damped init
 
     # Calculate the Zel'dovich power spectrum at z=0 with kc=5 h/Mpc
 
-    P_zel_0_5=CTM(nk=100).zeldovich_power(input_k=k_vals, kc=5.0)
+    P_zel_0_5=CTM(nk=500).zeldovich_power(input_k=k_vals, kc=5.0)
 
 .. jupyter-execute::
 
@@ -286,20 +281,14 @@ We can also calculate the Zel'dovich power spectrum using a Gaussian damped init
 Example III - Calculating the CTM power spectrum
 ************************************************
 
-We can also calculate the Beyond Zel'dovich power spectrum if no :math:`A\left(z\right)` and :math:`B\left(z\right)` functions are specified. These functions are
-
-.. math::
-
-  A\left(z\right)=\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\ \mathrm{and\ } B\left(z\right)=-\epsilon\frac{3}{2}H_0^2\Omega_m\int_z'^z\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^z\frac{dz'}{H\left(z'\right)}\left(\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\right)^2.
-
-See Lane et al. (2021) for more details.
+We can also calculate the Beyond Zel'dovich power spectrum if no :math:`A\left(z\right)` and :math:`B\left(z\right)` functions are specified. See Lane et al. (2021) for more details.
 
 .. jupyter-execute::
     :hide-output:
 
     # Calculate the Beyond Zel'dovich power spectrum at z=0 with kc=5 h/Mpc
 
-    P_ctm_0_5=CTM(nk=100).ctm_power(input_k=k_vals, kc=5.0)
+    P_ctm_0_5=CTM(nk=500).ctm_power(input_k=k_vals, kc=5.0)
 
 .. jupyter-execute::
 
@@ -316,10 +305,6 @@ See Lane et al. (2021) for more details.
   plt.show()
 
 You can also define your own :math:`A\left(z\right)` function. The :math:`B\left(z\right)` is calculated as
-
-.. math::
-
-  B\left(z\right)=-\epsilon\frac{3}{2}H_0^2\Omega_m\int_z'^z\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^z\frac{dz'}{H\left(z'\right)}\left(A\left(z\right)\right)^2.
 
 .. jupyter-execute::
     :hide-output:
@@ -338,7 +323,7 @@ You can also define your own :math:`A\left(z\right)` function. The :math:`B\left
 
     # Calculate the Beyond Zel'dovich power spectrum at z=0 with kc=5 h/Mpc with input A
 
-    P_ctm_input_A=CTM(nk=100).ctm_power(input_k=k_vals, kc=5.0, input_z=z_vals, input_A=A_vals)
+    P_ctm_input_A=CTM(nk=500).ctm_power(input_k=k_vals, kc=5.0, input_z=z_vals, input_A=A_vals)
 
 .. jupyter-execute::
 
@@ -364,8 +349,8 @@ Example IV - Computing two-point correlation functions
 
   # Compute the Zel'dovich and CTM correlation functions
 
-  r_zel, corr_zel=CTM(nk=100).corr_func_zel()
-  r_ctm, corr_ctm=CTM(nk=100).corr_func_ctm()
+  r_zel, corr_zel=CTM(nk=500).corr_func_zel()
+  r_ctm, corr_ctm=CTM(nk=500).corr_func_ctm()
 
 .. jupyter-execute::
 
