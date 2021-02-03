@@ -90,6 +90,6 @@ html_static_path = ['_static']
 #
 # html_sidebars = {}
 #---sphinx-themes-----
-html_theme = 'master'
+html_theme = 'nature'
 #import sphinx_hand_theme
 #html_theme_path = [sphinx_hand_theme.get_html_theme_path()]
