@@ -2,7 +2,7 @@
 
 A Python module to compute the power spectrum and 2-point correlation function in real space using second-order CTM.
 
-Please see the [Documentation](https://github.com/franlane94/CTM/wiki) for more details
+Please see the [Documentation](https://ctm-module.readthedocs.io) for more details
 
 **Any queries please email**: <ctmcodehelp@gmail.com>
 

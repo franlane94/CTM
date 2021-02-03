@@ -15,8 +15,9 @@ The code is available at `Github <https://github.com/franlane94/CTM>`__ but can 
 
 .. code-block:: bash
 
-   pip install ctm-module
-
+   git clone https://github.com/franlane94/CTM
+   cd directory_ctm_is
+   pip install .
 
 To install the code from source, first run the following
 
