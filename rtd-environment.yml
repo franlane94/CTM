@@ -1,4 +1,4 @@
-name: ctm
+name: ctm-module
 
 dependencies:
     - python

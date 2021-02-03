@@ -1,9 +1,9 @@
 from setuptools import setup
 
-setup(name='ctm',
+setup(name='ctm-module',
       version='1.11',
       description='Module to compute the power spectrum and two-point correlation function using the CTM',
-      url='https://ctm.readthedocs.io',
+      url='https://ctm-module.readthedocs.io',
       author='Fran Lane',
       author_email='ctmcodehelp@gmail.com',
       license='MIT',

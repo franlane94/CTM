@@ -209,7 +209,7 @@ Example I - Calculating the linear power spectrum
 
   import numpy as np
   import matplotlib.pyplot as plt
-  from ctm import CTM
+  from ctm-module import CTM
 
   # Define the k values
 

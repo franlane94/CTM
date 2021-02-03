@@ -34,7 +34,7 @@ pip install classylss
 The CTM module can be installed using
 
 ```
-pip install ctm
+pip install ctm-module
 ```
 
 if this method is used then `mcfit` and `classylss` will be automatically installed if they have not previously been installed. To check the code has been installed properly run in the terminal
