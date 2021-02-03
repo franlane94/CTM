@@ -267,7 +267,7 @@ We can also calculate the Zel'dovich power spectrum using a Gaussian damped init
 
     # Calculate the Zel'dovich power spectrum at z=0 with kc=5 h/Mpc
 
-    P_zel_0_5=CTM(nk=1000).zeldovich_power(input_k=k_vals, kc=5.0)
+    P_zel_0_5=CTM(nk=100).zeldovich_power(input_k=k_vals, kc=5.0)
 
 .. jupyter-execute::
 
@@ -299,7 +299,7 @@ See Lane et al. (2021) for more details.
 
     # Calculate the Beyond Zel'dovich power spectrum at z=0 with kc=5 h/Mpc
 
-    P_ctm_0_5=CTM(nk=1000).ctm_power(input_k=k_vals, kc=5.0)
+    P_ctm_0_5=CTM(nk=100).ctm_power(input_k=k_vals, kc=5.0)
 
 .. jupyter-execute::
 
@@ -338,7 +338,7 @@ You can also define your own :math:`A\left(z\right)` function. The :math:`B\left
 
     # Calculate the Beyond Zel'dovich power spectrum at z=0 with kc=5 h/Mpc with input A
 
-    P_ctm_input_A=CTM(nk=1000).ctm_power(input_k=k_vals, kc=5.0, input_z=z_vals, input_A=A_vals)
+    P_ctm_input_A=CTM(nk=100).ctm_power(input_k=k_vals, kc=5.0, input_z=z_vals, input_A=A_vals)
 
 .. jupyter-execute::
 
@@ -364,8 +364,8 @@ Example IV - Computing two-point correlation functions
 
   # Compute the Zel'dovich and CTM correlation functions
 
-  r_zel, corr_zel=CTM(nk=1000).corr_func_zel()
-  r_ctm, corr_ctm=CTM(nk=1000).corr_func_ctm()
+  r_zel, corr_zel=CTM(nk=100).corr_func_zel()
+  r_ctm, corr_ctm=CTM(nk=100).corr_func_ctm()
 
 .. jupyter-execute::
 
