@@ -11,3 +11,4 @@ dependencies:
       - mcfit
       - nbsphinx
       - sphinx_hand_theme
+      - jupyter-sphinx
