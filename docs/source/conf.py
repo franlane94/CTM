@@ -31,7 +31,8 @@ extensions = [
     'sphinx.ext.githubpages',
     'recommonmark',
     'nbsphinx',
-    'jupyter_sphinx.execute'
+    'jupyter_sphinx.execute',
+    'sphinx_rtd_theme'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -90,6 +91,6 @@ html_static_path = ['_static']
 #
 # html_sidebars = {}
 #---sphinx-themes-----
-import sphinx_hand_theme
-html_theme = 'sphinx_hand_theme'
-html_theme_path = [sphinx_hand_theme.get_html_theme_path()]
+import sphinx_rtd_theme
+html_theme = 'sphinx_rtd_theme'
+#html_theme_path = [sphinx_hand_theme.get_html_theme_path()]
