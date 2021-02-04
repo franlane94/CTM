@@ -74,7 +74,7 @@ The default cosmology is `Planck18 <https://arxiv.org/abs/1807.06209>`__ and the
 Citation
 --------
 
-The CTM module is described in Lane et al. 2021, if you make use of the CTM module, please include a citation to this work in any publications.
+The CTM module is described in `Lane et al. 2021 <https://arxiv.org/pdf/2102.01698.pdf>`__ , if you make use of the CTM module, please include a citation to this work in any publications.
 
 Acknowledgements
 ----------------

@@ -2,7 +2,7 @@
 
 A Python module to compute the power spectrum and 2-point correlation function in real space using second-order CTM.
 
-Please see the [Documentation](https://ctm-module.readthedocs.io) for more details
+Please see the [Documentation](https://ctm-module.readthedocs.io) for more details and cite [Lane et al. 2021](https://arxiv.org/pdf/2102.01698.pdf).
 
 **Any queries please email**: <ctmcodehelp@gmail.com>
 
@@ -34,7 +34,9 @@ pip install classylss
 The CTM module can be installed using
 
 ```
-pip install ctm-module
+git clone https://github.com/franlane94/CTM
+cd directory_ctm_is
+pip install .
 ```
 
 if this method is used then `mcfit` and `classylss` will be automatically installed if they have not previously been installed. To check the code has been installed properly run in the terminal

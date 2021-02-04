@@ -176,14 +176,11 @@
 \[\mathbf{x}\left(\mathbf{q},t\right)=\mathbf{q}+\Psi^{\left(0\right)}_i\left(\mathbf{q},t_i\right)\left[A\left(t\right)\delta_{ij}+B_\epsilon\left(t\right)\bar{E}_{ij}\left(\mathbf{q},t_i\right)\right]\]</div>
 <p>where the tidal tensor is <span class="math notranslate nohighlight">\(\bar{E}_{ij}\left(\mathbf{q},t\right)=\nabla_i\nabla_j\nabla^{-2}\delta^{\left(0\right)}\left(\mathbf{q},t\right)\)</span> with <span class="math notranslate nohighlight">\(\delta^{\left(0\right)}\)</span> being the linear overdensity field. This tidal term describes the effects of gravitational scattering and deflection. The time-dependent function <span class="math notranslate nohighlight">\(B_\epsilon\left(t\right)\)</span> is,</p>
 <div class="math notranslate nohighlight">
-\[B_\epsilon\left(t\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{t'}^{t}\frac{dt''}{a''^2}\int_{t_i}^{t}\frac{dt'}{a'}A\left(t'\right)^2,\]</div>
+\[B_\epsilon\left(t\right)=-\epsilon_\mathrm{BZ}\omega_0^2\int_{t_i}^{t}\frac{dt'}{a'^2}\int_{t_i}^{t'}\frac{dt''}{a''}A\left(t''\right)^2,\]</div>
 <p>which after using <span class="math notranslate nohighlight">\(dt=-\frac{a}{H}dz\)</span> can be written as,</p>
 <div class="math notranslate nohighlight">
-\[B_\epsilon\left(t\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^{z}\frac{dz'}{H\left(z'\right)}A\left(z'\right)^2.\]</div>
-<p>The Beyond Zel’dovich approximation is the second-order CTM trajectory given in with the following time-dependent functions</p>
-<div class="math notranslate nohighlight">
-\[A\left(z\right)=\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\ \mathrm{and\ }
-B_\epsilon\left(z\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^{z}\frac{dz'}{H\left(z'\right)}\left(\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\right)^2.\]</div>
+\[B_\epsilon\left(t\right)=-\epsilon_\mathrm{BZ}\omega_0^2\int_{z_i}^{z}\frac{dz'}{a'H\left(z'\right)}\int_{z_i}^{z'}\frac{dz''}{H\left(z''\right)}A\left(z''\right)^2.\]</div>
+<p>The Beyond Zel’dovich approximation is the second-order CTM trajectory with :math:Aleft(zright)=frac{D_1left(zright)}{D_1left(z_iright)}.</p>
 </div>
 <div class="section" id="using-the-ctm-module-in-real-space">
 <h2>Using the CTM module in real space<a class="headerlink" href="#using-the-ctm-module-in-real-space" title="Permalink to this headline">¶</a></h2>
@@ -483,7 +480,7 @@ B_\epsilon\left(z\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{
 <div class="docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Zel&#39;dovich power spectrum at z=0</span>
 
-<span class="n">P_zel_0</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">zeldovich_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">)</span>
+<span class="n">P_zel_0</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">zeldovich_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -508,7 +505,7 @@ B_\epsilon\left(z\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{
 <div class="docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Zel&#39;dovich power spectrum at z=0 with kc=5 h/Mpc</span>
 
-<span class="n">P_zel_0_5</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">zeldovich_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="n">P_zel_0_5</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">zeldovich_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -531,14 +528,11 @@ B_\epsilon\left(z\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{
 </div>
 <div class="section" id="example-iii-calculating-the-ctm-power-spectrum">
 <h3>Example III - Calculating the CTM power spectrum<a class="headerlink" href="#example-iii-calculating-the-ctm-power-spectrum" title="Permalink to this headline">¶</a></h3>
-<p>We can also calculate the Beyond Zel’dovich power spectrum if no <span class="math notranslate nohighlight">\(A\left(z\right)\)</span> and <span class="math notranslate nohighlight">\(B\left(z\right)\)</span> functions are specified. These functions are</p>
-<div class="math notranslate nohighlight">
-\[A\left(z\right)=\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\ \mathrm{and\ } B\left(z\right)=-\epsilon\frac{3}{2}H_0^2\Omega_m\int_z'^z\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^z\frac{dz'}{H\left(z'\right)}\left(\frac{D_1\left(z\right)}{D_1\left(z_i\right)}\right)^2.\]</div>
-<p>See Lane et al. (2021) for more details.</p>
+<p>We can also calculate the Beyond Zel’dovich power spectrum if no <span class="math notranslate nohighlight">\(A\left(z\right)\)</span> and <span class="math notranslate nohighlight">\(B\left(z\right)\)</span> functions are specified. See Lane et al. (2021) for more details.</p>
 <div class="docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Beyond Zel&#39;dovich power spectrum at z=0 with kc=5 h/Mpc</span>
 
-<span class="n">P_ctm_0_5</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">ctm_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="n">P_ctm_0_5</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">ctm_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -559,8 +553,6 @@ B_\epsilon\left(z\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{
 <img alt="_images/ctm_7_0.png" src="_images/ctm_7_0.png" />
 </div>
 <p>You can also define your own <span class="math notranslate nohighlight">\(A\left(z\right)\)</span> function. The <span class="math notranslate nohighlight">\(B\left(z\right)\)</span> is calculated as</p>
-<div class="math notranslate nohighlight">
-\[B\left(z\right)=-\epsilon\frac{3}{2}H_0^2\Omega_m\int_z'^z\frac{dz''}{a''H\left(z''\right)}\int_{z_i}^z\frac{dz'}{H\left(z'\right)}\left(A\left(z\right)\right)^2.\]</div>
 <div class="docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define redshift values</span>
 
@@ -576,7 +568,7 @@ B_\epsilon\left(z\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{
 
 <span class="c1"># Calculate the Beyond Zel&#39;dovich power spectrum at z=0 with kc=5 h/Mpc with input A</span>
 
-<span class="n">P_ctm_input_A</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">ctm_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">input_z</span><span class="o">=</span><span class="n">z_vals</span><span class="p">,</span> <span class="n">input_A</span><span class="o">=</span><span class="n">A_vals</span><span class="p">)</span>
+<span class="n">P_ctm_input_A</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">ctm_power</span><span class="p">(</span><span class="n">input_k</span><span class="o">=</span><span class="n">k_vals</span><span class="p">,</span> <span class="n">kc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">input_z</span><span class="o">=</span><span class="n">z_vals</span><span class="p">,</span> <span class="n">input_A</span><span class="o">=</span><span class="n">A_vals</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -604,8 +596,8 @@ B_\epsilon\left(z\right)=\epsilon_\mathrm{BZ}\omega_0^2\int_{z'}^{z}\frac{dz''}{
 
 <span class="c1"># Compute the Zel&#39;dovich and CTM correlation functions</span>
 
-<span class="n">r_zel</span><span class="p">,</span> <span class="n">corr_zel</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">corr_func_zel</span><span class="p">()</span>
-<span class="n">r_ctm</span><span class="p">,</span> <span class="n">corr_ctm</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">corr_func_ctm</span><span class="p">()</span>
+<span class="n">r_zel</span><span class="p">,</span> <span class="n">corr_zel</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">corr_func_zel</span><span class="p">()</span>
+<span class="n">r_ctm</span><span class="p">,</span> <span class="n">corr_ctm</span><span class="o">=</span><span class="n">CTM</span><span class="p">(</span><span class="n">nk</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">corr_func_ctm</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

@@ -52,7 +52,7 @@ plt.show()
 
 # Calculate the Zel'dovich power spectrum at z=0
 
-P_zel_0=CTM(nk=1000).zeldovich_power(input_k=k_vals)
+P_zel_0=CTM(nk=300).zeldovich_power(input_k=k_vals)
 
 # Plot the results
 
@@ -67,7 +67,7 @@ plt.show()
 
 # Calculate the Zel'dovich power spectrum at z=0 with kc=5 h/Mpc
 
-P_zel_0_5=CTM(nk=1000).zeldovich_power(input_k=k_vals, kc=5.0)
+P_zel_0_5=CTM(nk=300).zeldovich_power(input_k=k_vals, kc=5.0)
 
 # Plot the results
 
@@ -83,7 +83,7 @@ plt.show()
 
 # Calculate the Beyond Zel'dovich power spectrum at z=0 with kc=5 h/Mpc
 
-P_ctm_0_5=CTM(nk=1000).ctm_power(input_k=k_vals, kc=5.0)
+P_ctm_0_5=CTM(nk=300).ctm_power(input_k=k_vals, kc=5.0)
 
 # Plot the results
 
@@ -111,7 +111,7 @@ for i in range(100):
 
 # Calculate the Beyond Zel'dovich power spectrum at z=0 with kc=5 h/Mpc with input A
 
-P_ctm_input_A=CTM(nk=1000).ctm_power(input_k=k_vals, kc=5.0, input_z=z_vals, input_A=A_vals)
+P_ctm_input_A=CTM(nk=300).ctm_power(input_k=k_vals, kc=5.0, input_z=z_vals, input_A=A_vals)
 
 # Plot the results
 
@@ -129,8 +129,8 @@ r_lin, corr_lin=CTM().corr_func(k_vals, P_lin_0)
 
 # Compute the Zel'dovich and CTM correlation functions
 
-r_zel, corr_zel=CTM(nk=1000).corr_func_zel()
-r_ctm, corr_ctm=CTM(nk=1000).corr_func_ctm()
+r_zel, corr_zel=CTM(nk=300).corr_func_zel()
+r_ctm, corr_ctm=CTM(nk=300).corr_func_ctm()
 
 # Plot the results
 
