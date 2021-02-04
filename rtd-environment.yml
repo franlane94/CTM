@@ -10,7 +10,6 @@ dependencies:
       - classylss
       - mcfit
       - nbsphinx
-      - sphinx_hand_theme
       - jupyter-sphinx
       - seaborn
       - sphinx-rtd-theme

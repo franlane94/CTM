@@ -166,3 +166,26 @@ Function to calculate the two-point correlation function for the CTM
 
 Examples
 --------
+
+For a quick start please see the `Jupyter notebook <https://github.com/franlane94/CTM/tree/master/Examples>`__.
+
+Example I - Calculating the linear power spectrum
+*************************************************
+
+.. code-block:: python
+
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from ctm import CTM
+
+  # Define the k values
+
+  k_vals=np.logspace(-3, 1, 1000)
+
+  # Calculate the linear power spectrum at z=0
+
+  P_lin_0=CTM().linear_power(k_vals)
+
+  # Calculate the linear power spectrum at z=1
+
+  P_lin_1=CTM().linear_power(k_vals, z_val=1.0)
