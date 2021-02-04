@@ -189,3 +189,69 @@ Example I - Calculating the linear power spectrum
   # Calculate the linear power spectrum at z=1
 
   P_lin_1=CTM().linear_power(k_vals, z_val=1.0)
+
+
+Example II - Calculating the Zel'dovich power spectrum
+******************************************************
+
+.. code-block:: python
+
+  # Calculate the Zel'dovich power spectrum at z=0
+
+  P_zel_0=CTM().zeldovich_power(input_k=k_vals)
+
+We can also calculate the Zel'dovich power spectrum using a Gaussian damped initial power spectrum given by
+
+.. math::
+
+  \mathrm{P}_\mathrm{damped}\left(k\right)=\mathrm{e}^{-\left(\frac{k}{k_c}\right)^2}\mathrm{P}_\mathrm{lin}\left(k\right)
+
+.. code-block:: python
+
+  # Calculate the Zel'dovich power spectrum at z=0 with kc=5 h/Mpc
+
+  P_zel_0_5=CTM().zeldovich_power(input_k=k_vals, kc=5.0)
+
+Example III - Calculating the CTM power spectrum
+************************************************
+
+We can also calculate the Beyond Zel'dovich power spectrum if no :math:`A\left(z\right)` and :math:`B\left(z\right)` functions are specified. See Lane et al. (2021) for more details.
+
+.. code-block:: python
+
+    # Calculate the Beyond Zel'dovich power spectrum at z=0 with kc=5 h/Mpc
+
+    P_ctm_0_5=CTM().ctm_power(input_k=k_vals, kc=5.0)
+
+You can also define your own :math:`A\left(z\right)` function. The :math:`B\left(z\right)` is calculated as
+
+.. code-block:: python
+
+    # Define redshift values
+
+    z_vals=np.linspace(0.0, 200.0, 100)
+
+    # Calculate A values
+
+    A_vals=np.zeros_like(z_vals)
+
+    for i in range(100):
+
+      A_vals[i]=CTM().linear_growth_factor(z_val=z_vals[i])/CTM().linear_growth_factor(z_val=99.0)
+
+    # Calculate the Beyond Zel'dovich power spectrum at z=0 with kc=5 h/Mpc with input A
+
+    P_ctm_input_A=CTM().ctm_power(input_k=k_vals, kc=5.0, input_z=z_vals, input_A=A_vals)
+
+Example IV - Computing two-point correlation functions
+******************************************************
+
+.. code-block:: python
+
+  # Compute the linear correlation function
+  r_lin, corr_lin=CTM().corr_func(k_vals, P_lin_0)
+
+  # Compute the Zel'dovich and CTM correlation functions
+
+  r_zel, corr_zel=CTM(nk=300).corr_func_zel()
+  r_ctm, corr_ctm=CTM(nk=300).corr_func_ctm()
