@@ -1,7 +1,7 @@
 from setuptools import setup
 
-setup(name='ctm',
-      version='1.11',
+setup(name='ctmmodule',
+      version='1.12',
       description='Module to compute the power spectrum and two-point correlation function using the CTM',
       url='https://ctm-module.readthedocs.io',
       author='Fran Lane',

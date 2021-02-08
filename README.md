@@ -34,12 +34,12 @@ pip install classylss
 The CTM module can be installed using
 
 ```
-git clone https://github.com/franlane94/CTM
-cd directory_ctm_is
-pip install .
+pip install ctmmodule
 ```
 
-if this method is used then `mcfit` and `classylss` will be automatically installed if they have not previously been installed. To check the code has been installed properly run in the terminal
+if this method is used then `mcfit` and `classylss` will be automatically installed if they have not previously been installed. If `classylss` fails to install automatically please follow the `conda` installation instructions above and then attempt to `pip` install the `ctmmodule` again.
+
+To check the code has been installed properly run in the terminal
 
 ```
 python

@@ -15,9 +15,9 @@ The code is available at `Github <https://github.com/franlane94/CTM>`__ but can 
 
 .. code-block:: bash
 
-   git clone https://github.com/franlane94/CTM
-   cd directory_ctm_is
-   pip install .
+   pip install ctmmodule
+
+If ``pip`` fails to install ``classylss`` please follow the following ``conda`` `instructions <https://classylss.readthedocs.io/en/stable/>`__ and then retry the installation of the CTM module using ``pip``.
 
 To install the code from source, first run the following
 
@@ -32,7 +32,6 @@ Then navigate to your .bash_profile (or .profile on Linux machines) and add the 
 .. code-block:: bash
 
   export PYTHONPATH="$PYTHONPATH:/DIRECTORY_WHERE_CTM_IS_INSTALLED"
-
 
 To check the module has been installed correctly run
 
